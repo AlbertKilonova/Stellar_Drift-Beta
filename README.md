@@ -17,6 +17,7 @@ Stellar_Drift是使用Twine引擎基于HTML开发的一款开源文字冒险游�
 
 ## 下载
 PC端：[下载](#)或直接打包下载此仓库，然后双击启动Stellar_Drift.html（_**不是index.html**_）
+
 安卓端：[下载](#)
 
 ## 在线游玩
