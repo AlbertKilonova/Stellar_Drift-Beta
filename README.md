@@ -30,5 +30,5 @@ PC端：[下载](#)或直接打包下载此仓库，然后双击启动Stellar_Dr
 
 ## 联系作者
 - [Email](mailto:Albert.Kilonova@gmail.com)
-- [QQ_Android](mqqwpa://im/chat?chat_type=wpa&uin=2294965955&version=1&src_type=web)
-- [QQ_PC](tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2294965955)
+- [QQ_Android](mqqwpa://im/chat?chat_type=wpa&uin=2294965955&version=1&src_type=web)：2294965955
+- [QQ_PC](tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2294965955)：2294965955
