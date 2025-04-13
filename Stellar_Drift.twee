@@ -18,14 +18,24 @@ Stellar_Drift
 :: Archive [nobr] {"position":"150,150","size":"100,100"}
 <h1>档案库</h1>
 <hr/>
+<<button "<<返回" $passage>><</button>>
 <ul id="archive-list">
 <<if $archives.logbook.I == true>>
-<li>[[航行日志0_0]]</li>
+<li>[[CL_EP_GW_001]]</li>
 <<elseif $archives.logbook.II == true>>
 <li>[[航行日志0_1]]</li>
 <<else>>
 <</if>>
 </ul>
+
+
+:: CL_EP_GW_001 [nobr] {"position":"150,275","size":"100,100"}
+<<button "<<返回" "Archive">><</button>><h1>CL_EP_GW[C001]</h1>
+<hr/>
+<h3>CL_EP_GW_01</h3>
+记录时间：N_17_04_27
+<br/>
+记录坐标：@@color:red;GRO J1655-40@@
 
 
 :: StoryAuthor {"position":"0,450","size":"100,100"}
@@ -55,6 +65,7 @@ UI
 <<set $names = {playerName:"",vesselOS:"EOS-MK.XII",warship:"临界级"}>>
 <<set $location = $names.warship>>
 <<set $archives = {open:false,logbook: {I:false,II:false,III:false}}>>
+<<set $passage = "start">>
 
 /* 定义进度条 */
 <<newmeter Loading 0>>
@@ -158,6 +169,7 @@ $names.vesselOS：
 
 
 :: openingStoryline0_1 [nobr] {"position":"700,450","size":"100,100"}
+<<first>>
 <<timed 0.5s t8n>>
 $names.vesselOS：
 <<type 40ms>>您是$names.warship的领航员。<</type>>
@@ -171,11 +183,14 @@ $names.vesselOS：
 <<notify>>航行日志已存入档案库<</notify>>
 <<set $archives.open = true>>
 <<set $archives.logbook.I = true>>
+<<set $passage = "openingStoryline0_1">>
 <<redo>>
 <<type 40ms>>现在您可以随时查看它<</type>>
-<<next>>
-<<type 40ms>>现在您可以进入档案库检阅航行日志<</type>>
 <</timed>>
+<<finally>>
+$names.vesselOS：
+<<type 40ms>>欢迎回来，领航员<</type>>
+<</first>>
 
 
 :: quarters {"position":"1100,0","size":"100,100"}
@@ -214,15 +229,11 @@ Sub~~script~~
 !!!!!!Level 6 Heading
 
 
-:: 航行日志0_0 {"position":"150,275","size":"100,100"}
-暂无
-
-
 :: 航行日志0_1 {"position":"275,275","size":"100,100"}
 暂无
 
 
-:: 音效库 {"position":"100,800","size":"100,100"}
+:: 音效库 {"position":"150,800","size":"100,100"}
 <<playMelody save>>
 
 
