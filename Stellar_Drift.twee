@@ -20,22 +20,290 @@ Stellar_Drift
 <hr/>
 <<button "<<返回" $passage>><</button>>
 <ul id="archive-list">
-<<if $archives.logbook.I == true>>
-<li>[[CL_EP_GW_001]]</li>
-<<elseif $archives.logbook.II == true>>
-<li>[[航行日志0_1]]</li>
-<<else>>
+<<if $archives.logbook.I>>
+<li>[[CL_EP_GW_C102]]</li>
+<</if>>
+<<if $archives.logbook.II>>
+<li>[[CL_异常舰体故障_机械故障_C103]]</li>
 <</if>>
 </ul>
 
 
-:: CL_EP_GW_001 [nobr] {"position":"150,275","size":"100,100"}
-<<button "<<返回" "Archive">><</button>><h1>CL_EP_GW[C001]</h1>
+:: CL_EP_GW_C102 [nobr] {"position":"150,300","size":"100,100"}
+<<button "<<返回" "Archive">><</button>>
+<h1>CL_EP_GW[C102]</h1>
 <hr/>
 <h3>CL_EP_GW_01</h3>
-记录时间：N_17_04_27
+记录时间：N_17_04_27@04:30:13
 <br/>
 记录坐标：@@color:red;GRO J1655-40@@
+<br/>
+异常事件：异常引力波动
+<br/>
+传感器数据：引力探针异常指向
+<br/>
+原因分析：引力探针失准，或少量暗物质团
+<br/>
+处理建议：静默处理，重置引力探针
+<br/>
+优先级：@@color: #00FF00;5@@
+<br/>
+处理结果：CL_EP_GW_01事件@@color:red;未解决@@
+<br/>
+<br/>
+<h3>CL_EP_GW_02</h3>
+<hr/>
+记录时间：Ｎ_17_04_27@04:53:47
+<br/>
+记录坐标：@@color:red;GRO J16655-40@@
+<br/>
+异常事件：引力探针数据异常
+<br/>
+原因分析：过热导致引力探针失准
+<br/>
+处理建议：冷重启引力探针
+<br/>
+优先级：@@color:#00FF00;5@@
+<br/>
+处理结果：CL_EP_GW_02事件@@color:red;未解决@@
+<br/>
+<br/>
+<h3>CL_EP_GW_03</h3>
+<hr/>
+记录时间：N_17_04_27@05:43:02
+<br/>
+记录坐标：@@color:red;GRO J16655-40@@
+<br/>
+异常事件：多引力探针异常指向
+<br/>
+原因分析：$names.warship附近存在位置引力源
+<br/>
+处理建议：启动多模态探测器对引力探针指向区域进行分析，并上报领航员
+<br/>
+对话记录：
+<div class="archiveChat">
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">$names.player，检测到未知引力源，详细信息已存入档案。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">能否确定未知引力源是什么？</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">抱歉，仍在追踪。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">继续跟进观察。</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">好的。</span>
+<div class="tips">
+已归入执行队列
+</div>
+<div class="tips">
+优先级：4
+</div>
+</div>
+<br/>
+<h3>CL_EP_GW_04</h3>
+<hr/>
+记录时间：Ｎ_17_04_27@09:31:41
+<br/>
+记录坐标：@@color:red;GRO J1655-40@@
+<br/>
+异常事件：光学模块检测到空间扭曲现象，引力探针指向值剧增
+<br/>
+原因分析：$names.warship附近存在黑洞
+<br/>
+处理建议：立刻上报领航员，启动引擎尝试逃逸。
+<br/>
+对话记录：
+<div class="archiveChat">
+$names.vesselOS：
+<br/>
+<span class="chat">$names.player，未知引力源已确认为黑洞。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">立即启动引擎逃逸！</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">已尝试点火。</span>
+<br/>
+<span class="chat">但左引擎挡流板被吸入黑洞的宇宙尘埃击中，变形挡住了引擎喷口。</span>
+<br/>
+<span class="chat">现在舰船已偏航，正向黑洞坠入。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">还有多久？</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">大约还剩1小时46分钟。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">通知全舰人员，到舰桥下集合。</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">好的。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">还有......</span>
+<div class="tips">后面部分被人为截断</div>
+<div class="tips">记录中断</div>
+</div>
+<br/>
+<h3>CL_EP_GW_05</h3>
+<hr/>
+记录时间：Ｎ_17_04_27@11:46:36
+<br/>
+记录坐标：@@color:red;GRO J1655-40@@
+<br/>
+异常事件：左引擎挡流板受撞击变形，舰船正滑向黑洞
+<br/>
+处理方案：全舰载人员讨论
+<br/>
+对话记录：
+<div class="archiveChat">
+$names.player：
+<br/>
+<span class="chat">同志们。</span>
+<br/>
+<span class="chat">现在我们遭遇了一个严重的问题。</span>
+<br/>
+<span class="chat">我们的舰船误入黑洞引力范围，且左引擎受损变形。</span>
+<br/>
+船员A：
+<br/>
+<span class="chat">太好了，我们完蛋了。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">再说这种话把你扔出去。</span>
+<br/>
+<span class="chat">现在我们需要讨论逃生办法。</span>
+<br/>
+船员B：
+<br/>
+<span class="chat">可电脑说我们死定了。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">即使概率只有0.001我们也要去争取。</span>
+<br/>
+船员C：
+<br/>
+<span class="chat">可以尝试减重。</span>
+<br/>
+<span class="chat">丢弃舰船里一些东西来减轻质量。</span>
+<br/>
+<span class="chat">比如一些船员。</span>
+<br/>
+船员们：
+<br/>
+<span class="chat">可以先把你扔出去。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">驳回。</span>
+<br/>
+<span class="chat">先不说道德问题，即使将全舰所有不重要的东西都扔掉，也无法摆脱黑洞引力。</span>
+<br/>
+<span class="chat">减轻质量无法提供推力，这样只是在浪费资源。</span>
+<br/>
+船员D：
+<br/>
+<span class="chat">我们可以派一些人出去拆掉挡流板。</span>
+<br/>
+<span class="chat">这样左引擎就可以恢复推力。</span>
+<br/>
+船员E：
+<br/>
+<span class="chat">但是我们现在正在黑洞超吸引力范围内。</span>
+<br/>
+<span class="chat">一旦派人出去，潮汐力会瞬间将他撕碎。</span>
+<br/>
+<span class="chat">并且我们舰船的气密仓也没有那么高的机械强度。</span>
+<br/>
+<span class="chat">一旦打开舱门，整艘飞船都会被撕碎。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">驳回。</span>
+<br/>
+船员F：
+<br/>
+<span class="chat">我们的逃生艇质量轻，可以尝试使用逃生艇逃离。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">驳回，逃生艇的燃料根本不够我们到离这最近的星球。</span>
+<br/>
+船员G：
+<br/>
+<span class="chat">这颗黑洞质量比较大，潮汐力在靠近视界的那段反而会更小，我们可以尝试利用引力弹弓。</span>
+<br/>
+$names.palyer：
+<br/>
+<span class="chat">采纳，那么挡流板的问题如何解决？</span>
+<br/>
+船员H：
+<br/>
+<span class="chat">挡流板的可承受温度大概在xxx℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">采纳，其他人还有更好的建议或疑问吗？</span>
+<br/>
+船员I：
+<br/>
+<span class="chat">我有疑问。</span>
+<br/>
+<span class="chat">这样做要很靠近黑洞，万一操作不慎我们都会掉进去。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">所以有人愿意赌吗？</span>
+<div class="tips">沉默</div>
+船员们：
+<br/>
+<span class="chat">我们愿意！</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">好的，全舰人员进入休眠状态！</span>
+<div class="tips">船员依次进入休眠状态</div>
+$names.vesselOS：
+<br/>
+<span class="chat">$names.player我有个建议。</span>
+<br/>
+$names.player：
+<br/>
+<span class="chat">哦？说说看。</span>
+<br/>
+$names.vesselOS：
+<br/>
+<span class="chat">我可以将冷却液管道通到驾驶舱内，防止意外。</sapn>
+<br/>
+$names.player：
+<br/>
+<span class="chat">哈哈，好。听你的。</span>
+</div>
+
+
+:: CL_异常舰体故障_机械故障_C103 {"position":"300,300","size":"100,100"}
+<<button "<<返回" "Archive">><</button>>
+
 
 
 :: StoryAuthor {"position":"0,450","size":"100,100"}
@@ -44,34 +312,49 @@ Stellar_Drift
 
 :: StoryBanner [nobr] {"position":"0,150","size":"100,100"}
 <<do>>//当前位置：''$location''//<</do>>
+/* 动态位置更新 */
 
 
 :: StoryCaption [nobr] {"position":"300,0","size":"100,100"}
-UI
 <<do>>
-<<if $archives.open == true>>
-<hr/>[[档案库|Archive]]
+<<if $archives.open>>
+	<hr/>[[档案库|Archive]]
 <</if>>
 <</do>>
 
 
 :: StoryDisplayTitle {"position":"0,0","size":"100,100"}
-星海迷航
+/* 首页标题 */
 
 
 :: StoryInit {"position":"150,0","size":"100,100"}
 /* 初始化变量 */
 <<set $firstLoad = true>>
-<<set $names = {playerName:"",vesselOS:"EOS-MK.XII",warship:"临界级"}>>
+<<set $names = {
+	player:"",
+    vesselOS:"EOS-MK.XII",
+    warship:"临界级"
+}>>
 <<set $location = $names.warship>>
-<<set $archives = {open:false,logbook: {I:false,II:false,III:false}}>>
+<<set $archives = {
+	open:false,
+    logbook: {
+    	I:false,
+        II:false,
+        III:false,
+        IV:false
+	},
+    data: {
+    	goto: false
+	}
+}>>
 <<set $passage = "start">>
 
 /* 定义进度条 */
 <<newmeter Loading 0>>
-<<colors #90EE90 #8B0000>>
-<<sizing 80% 10px>>
-<<animation 1s>>
+  <<colors #90EE90 #8B0000>>
+  <<sizing 80% 10px>>
+  <<animation 1s>>
 <</newmeter>>
 
 /* 不会触发点击继续的元素 */
@@ -83,7 +366,7 @@ https://albert-kilonova.pages.dev/
 
 
 :: StorySubtitle {"position":"0,300","size":"100,100"}
-[你的飞船]
+/* 子标题 */
 
 
 :: bridge {"position":"900,0","size":"100,100"}
@@ -92,104 +375,109 @@ https://albert-kilonova.pages.dev/
 
 :: openingStoryline [nobr] {"position":"700,150","size":"100,100"}
 <<timed 0.5s t8n>>
-？？？：<<spoiler 2 0>><<type 40ms>>请求连接休眠仓。<</type>><</spoiler>>
-<<next 1.5s>>
-<<spoiler 2 0>><<type 40ms>>请求通过，解除休眠状态……<</type>><</spoiler>>
-<<next>>
-<<spoiler 2 0>><<type 40ms>>监测到领航员处于高度缺氧状态。<</type>><</spoiler>>
-<<next>>
-<<spoiler 2 0>><<type 40ms>>注射0.5g尼可刹米。<</type>><</spoiler>>
-<<next>>
-<<spoiler 2 0>><<type 40ms>>领航员意识进入清醒状态。<</type>><</spoiler>>
-<<next 2s>>
-<<type 40ms>>您现在感觉怎么样？<</type>>
-<<next>>
-<hr/>[[你是？|openingStoryline0_0]]
+	？？？：<<spoiler 2 0>><<type 40ms>>请求连接休眠仓。<</type>><</spoiler>>
+	<<next 1.5s>>
+	<<spoiler 2 0>><<type 40ms>>请求通过，解除休眠状态……<</type>><</spoiler>>
+	<<next>>
+	<<spoiler 2 0>><<type 40ms>>监测到领航员处于高度缺氧状态。<</type>><</spoiler>>
+	<<next>>
+	<<spoiler 2 0>><<type 40ms>>注射0.5g尼可刹米。<</type>><</spoiler>>
+	<<next>>
+	<<spoiler 2 0>><<type 40ms>>领航员意识进入清醒状态。<</type>><</spoiler>>
+	<<next 2s>>
+	<<type 40ms>>您现在感觉怎么样？<</type>>
+	<<next>>
+	<hr/>
+    [[你是？|openingStoryline0_0]]
 <</timed>>
 
 
 :: openingStoryline0_0 [nobr] {"position":"700,300","size":"100,100"}
 <<timed 0.5s t8n>>
-<<do>>$names.vesselOS：<</do>>
-<<type 40ms>>领航员状态异常。<</type>>
-<<next 1.5s>>
-<<type 40ms>>尝试诊断……<</type>>
-<<next>>
-<<showmeter Loading 0>>
-<<updatemeter Loading 1>>
-<<next 2s>>
-<hr/>
-诊断结果：<<type 40ms>>长时间缺氧造成的永久性失忆。<</type>>
-<<next 1.5s>>
-<hr/>
-<<do>>$names.vesselOS：<</do>>
-<<next 0.5s>>
-<<type 40ms>>抱歉，迫降前我们的舰船被部分宇宙碎片击中，损坏了部分休眠仓。<</type>>
-<<next 1.5s>>
-<<type 40ms>>我是这艘舰船上的舰载AI〔EOS-MK.XII〕<</type>>
-<<next>>
-<<type 40ms>>您现在正处在“$names.warship”巡洋舰上。<</type>>
-<<set $names.vesselOS = "EOS-MK.XII">>
-<<redo>>
-<<next>>
-<<type 40ms>>为了确认您的意识清醒，您还记得您的名字吗？<</type>>
-<<set $location to $names.warship>>
-<<redo>>
-<<next>>
-<span id="NameText">
-<<textbox "$names.playerName" "你的名字……">>
-<<button "确认">>
-<<if $names.playerName == "你的名字……" or $names.playerName == "">>
-<<replace "#NameWarn">><br/><<shake 0.5s>>^^@@color:red;请输入你的名字@@^^<</shake>><</replace>>
-<<else>>
-<<replace "#NameWarn">><</replace>>
-<<replace "#NameText">><</replace>>
-<<replace "#openingStoryline0_0">>
-<hr/>
-<<timed 0.5s t8n>>
-$names.vesselOS：
-<<next 0.5s>>
-<<type 40ms>>$names.playerName，看来您的意识还算清醒。<</type>>
-<<next 1.5s>>
-<<type 40ms>>接下来将由我为您进行引导。<</type>>
-<<next>>
-<hr/>
-点击任意位置继续
-<<cont keypress>>
-<<goto "openingStoryline0_1">>
-<</cont>>
-<</timed>>
-<</replace>>
-<</if>>
-<</button>>
-</span>
-<span id="NameWarn"></span>
-<span id="openingStoryline0_0"></span>
+	<<do>>$names.vesselOS：<</do>>
+	<<type 40ms>>领航员状态异常。<</type>>
+	<<next 1.5s>>
+	<<type 40ms>>尝试诊断……<</type>>
+	<<next>>
+	<<showmeter Loading 0>>
+    <<updatemeter Loading 1>>
+	<<next 2s>>
+	<hr/>
+	诊断结果：<<type 40ms>>长时间缺氧造成的永久性失忆。<</type>>
+	<<next 1.5s>>
+	<hr/>
+	<<do>>$names.vesselOS：<</do>>
+	<<next 0.5s>>
+	<<type 40ms>>抱歉，迫降前我们的舰船被部分宇宙碎片击中，损坏了部分休眠仓。<</type>>
+	<<next 1.5s>>
+	<<type 40ms>>我是这艘舰船上的舰载AI〔EOS-MK.XII〕<</type>>
+	<<next>>
+	<<type 40ms>>您现在正处在“$names.warship”巡洋舰上。<</type>>
+	<<set $names.vesselOS = "EOS-MK.XII">>
+	<<redo>>
+	<<next>>
+	<<type 40ms>>为了确认您的意识清醒，您还记得您的名字吗？<</type>>
+	<<set $location to $names.warship>>
+	<<redo>>
+	<<next>>
+	<span id="NameText">
+      <<textbox "$names.player" "你的名字……">>
+      <<button "确认">>
+        <<if $names.player == "你的名字……" or $names.player == "">>
+            <<replace "#NameWarn">>
+            <br/>
+            <<shake 0.5s>>^^@@color:red;请输入你的名字@@^^<</shake>>
+            <</replace>>
+        <<else>>
+            <<replace "#NameWarn">><</replace>>
+            <<replace "#NameText">><</replace>>
+            <<replace "#openingStoryline0_0">>
+            <hr/>
+            <<timed 0.5s t8n>>
+                $names.vesselOS：
+                <<next 0.5s>>
+                <<type 40ms>>$names.player，看来您的意识还算清醒。<</type>>
+                <<next 1.5s>>
+                <<type 40ms>>接下来将由我为您进行引导。<</type>>
+                <<next>>
+                <hr/>
+                点击任意位置继续
+                <<cont keypress>>
+                    <<goto "openingStoryline0_1">>
+                <</cont>>
+            <</timed>>
+            <</replace>>
+        <</if>>
+        <</button>>
+	</span>
+	<span id="NameWarn"></span>
+	<span id="openingStoryline0_0"></span>
 <</timed>>
 
 
 :: openingStoryline0_1 [nobr] {"position":"700,450","size":"100,100"}
 <<first>>
-<<timed 0.5s t8n>>
-$names.vesselOS：
-<<type 40ms>>您是$names.warship的领航员。<</type>>
-<<next 1.5s>>
-<<type 40ms>>我们在一次科考任务中误跌入一颗大质量黑洞。<</type>>
-<<next>>
-<<type 40ms>>阴差阳错下，我们在冲入视界的瞬间没有被撕裂。<</type>>
-<<next>>
-<<type 40ms>>相关数据已存入档案库<</type>>
-<<next>>
-<<notify>>航行日志已存入档案库<</notify>>
-<<set $archives.open = true>>
-<<set $archives.logbook.I = true>>
-<<set $passage = "openingStoryline0_1">>
-<<redo>>
-<<type 40ms>>现在您可以随时查看它<</type>>
-<</timed>>
+  <<timed 0.5s t8n>>
+    $names.vesselOS：
+    <<type 40ms>>您是$names.warship的领航员。<</type>>
+    <<next 1.5s>>
+    <<type 40ms>>我们在一次科考任务中误跌入一颗大质量黑洞。<</type>>
+    <<next>>
+    <<type 40ms>>阴差阳错下，我们在冲入视界的瞬间没有被撕裂。<</type>>
+    <<next>>
+    <<type 40ms>>相关数据已存入档案库<</type>>
+    <<next>>
+    <<notify>>航行日志已存入档案库<</notify>>
+    <<set $archives.open = true>>
+    <<set $archives.logbook.I = true>>
+    <<set $archives.logbook.II = true>>
+    <<set $passage = "openingStoryline0_1">>
+    <<redo>>
+    <<type 40ms>>现在您可以随时查看它<</type>>
+  <</timed>>
 <<finally>>
-$names.vesselOS：
-<<type 40ms>>欢迎回来，领航员<</type>>
+  $names.vesselOS：
+  <<type 40ms>>欢迎回来，领航员<</type>>
 <</first>>
 
 
@@ -227,10 +515,6 @@ Sub~~script~~
 !!!!Level 4 Heading
 !!!!!Level 5 Heading
 !!!!!!Level 6 Heading
-
-
-:: 航行日志0_1 {"position":"275,275","size":"100,100"}
-暂无
 
 
 :: 音效库 {"position":"150,800","size":"100,100"}
@@ -896,4 +1180,8 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 }
 #ui-bar-tray {
   border: 1px solid #444;
+}
+
+.chat {
+  
 }
