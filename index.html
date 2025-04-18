@@ -245,36 +245,82 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
   border: 1px solid #444;
 }
 
+/* twine输入框 */
 input[type="text"] {
   min-width: 0px;
 }
 
+/* 档案馆边框 */
 .archiveChat {
   padding: 10px;
   border: 1px solid #444;
 }
 
+/* 对话消息样式 */
 .chat {
-  padding-top: 5px;
-  padding-left: 10px;
-  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
   margin-left: 15px;
+  padding-left: 8px;
   border: 1px solid #444;
+  transition: all 160ms ease-out;
+  position: relative;
+}
+
+.chat::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  left: -1px;
+  width: 5px;
+  height: 85%;
+  background-color: #3498db;
+  margin-left: 2px;
+  margin-right: 2px;
+  vertical-align: middle;
+  transition: all 160ms ease-out;
 }
 
 .chat:hover {
   border: 1px solid #fff;
 }
 
+.chat::after {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  background-color: #00BFFF4F;
+  vertical-align: middle;
+  z-index: -1;
+  transition: all 160ms ease-out;
+}
+
+.chat:hover::before {
+  width: 0;
+}
+
+.chat:hover::after {
+  width: 100%;
+}
+
+/* 提示框样式 */
 .tips {
   margin-top: 5px;
   padding: 5px;
   border-radius: 10px;
   border: 1px solid #444;
+  transition: all 160ms ease-out;
 }
 
 .tips:hover {
   border: 1px solid #fff;
+  background-color: #00bfff4f;
+  border-radius: 5px;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/***********************************************************************************************************************
 
 	locale/zh-CN.js – 简体中文
@@ -826,7 +872,11 @@ macros["playMelody"] = {
 &lt;&lt;/newmeter&gt;&gt;
 
 /* 不会触发点击继续的元素 */
-&lt;&lt;ignore &quot;a&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="StoryShare" tags="" position="0,600" size="100,100">https://albert-kilonova.pages.dev/</tw-passagedata><tw-passagedata pid="7" name="StorySubtitle" tags="" position="0,300" size="100,100">/* 子标题 */</tw-passagedata><tw-passagedata pid="8" name="bridge" tags="" position="900,0" size="100,100">&#39;&#39;这里是舰桥&#39;&#39;</tw-passagedata><tw-passagedata pid="9" name="openingStoryline" tags="nobr" position="700,150" size="100,100">&lt;&lt;timed 0.5s t8n&gt;&gt;
+&lt;&lt;ignore &quot;a&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="StoryShare" tags="" position="0,600" size="100,100">https://albert-kilonova.pages.dev/</tw-passagedata><tw-passagedata pid="7" name="StorySubtitle" tags="" position="0,300" size="100,100">/* 子标题 */</tw-passagedata><tw-passagedata pid="8" name="bridge" tags="nobr" position="900,0" size="100,100">&lt;&lt;set $passage = &quot;bridge&quot;&gt;&gt;
+舰桥
+&lt;hr/&gt;
+$names.vesselOS：
+&lt;&lt;type 40ms&gt;&gt;欢迎回来，$names.player。&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="openingStoryline" tags="nobr" position="700,150" size="100,100">&lt;&lt;timed 0.5s t8n&gt;&gt;
 	？？？：&lt;&lt;spoiler 2 0&gt;&gt;&lt;&lt;type 40ms&gt;&gt;请求连接休眠仓。&lt;&lt;/type&gt;&gt;&lt;&lt;/spoiler&gt;&gt;
 	&lt;&lt;next 1.5s&gt;&gt;
 	&lt;&lt;spoiler 2 0&gt;&gt;&lt;&lt;type 40ms&gt;&gt;请求通过，解除休眠状态……&lt;&lt;/type&gt;&gt;&lt;&lt;/spoiler&gt;&gt;
@@ -871,10 +921,15 @@ macros["playMelody"] = {
 	&lt;span id=&quot;NameText&quot;&gt;
       &lt;&lt;textbox &quot;$names.player&quot; &quot;你的名字……&quot;&gt;&gt;
       &lt;&lt;button &quot;确认&quot;&gt;&gt;
-        &lt;&lt;if $names.player == &quot;你的名字……&quot; or $names.player == &quot;&quot;&gt;&gt;
+        &lt;&lt;if $names.player == &quot;你的名字……&quot; or $names.player == &quot;&quot; or $names.player.substring(0, 1) == &quot; &quot;&gt;&gt;
             &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;
             &lt;br/&gt;
             &lt;&lt;shake 0.5s&gt;&gt;^^@@color:red;请输入你的名字@@^^&lt;&lt;/shake&gt;&gt;
+            &lt;&lt;/replace&gt;&gt;
+        &lt;&lt;elseif $names.player.length &gt; 8&gt;&gt;
+            &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;
+            &lt;br/&gt;
+            &lt;&lt;shake 0.5s&gt;&gt;^^@@color:red;名称字数不得超过8个字@@^^&lt;&lt;/shake&gt;&gt;
             &lt;&lt;/replace&gt;&gt;
         &lt;&lt;else&gt;&gt;
             &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -944,8 +999,17 @@ Sub~~script~~
     &lt;&lt;type 40ms&gt;&gt;现在您可以随时查看它&lt;&lt;/type&gt;&gt;
   &lt;&lt;/timed&gt;&gt;
 &lt;&lt;finally&gt;&gt;
+  &lt;&lt;timed 0s t8n&gt;&gt;
   $names.vesselOS：
   &lt;&lt;type 40ms&gt;&gt;欢迎回来，领航员&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next 1.5s&gt;&gt;
+  &lt;&lt;type 40ms&gt;&gt;相信您已经了解了大致情况&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next&gt;&gt;
+  &lt;&lt;type 40ms&gt;&gt;现在请随我来到舰桥&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next&gt;&gt;
+  &lt;hr/&gt;
+  [[前往舰桥|bridge][$firstLoad = false]]
+  &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/first&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Archive" tags="nobr" position="150,150" size="100,100">&lt;h1&gt;档案库&lt;/h1&gt;
 &lt;hr/&gt;
 &lt;&lt;button &quot;&lt;&lt;返回&quot; $passage&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -954,15 +1018,15 @@ Sub~~script~~
 &lt;li&gt;[[CL_EP_GW_C102]]&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $archives.logbook.II&gt;&gt;
-&lt;li&gt;[[CL_异常舰体故障_机械故障_C103]]&lt;/li&gt;
+&lt;li&gt;[[CL_MECH_FAL_C103]]&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $archives.logbook.III&gt;&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="17" name="CL_异常舰体故障_机械故障_C103" tags="" position="300,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;h1&gt;CL_异常舰体状态_机械故障[C103]&lt;/h1&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="17" name="CL_MECH_FAL_C103" tags="nobr" position="300,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;h1&gt;CL_MECH_FAL[C103]&lt;/h1&gt;
 &lt;hr/&gt;
-&lt;h3&gt;CL_异常舰体状态_机械故障&lt;/h3&gt;
+&lt;h3&gt;CL_MECH_FAL&lt;/h3&gt;
 记录时间：E_00_00_00@00:00:00
 &lt;br/&gt;
 记录坐标：@@color:red;无法定位@@
@@ -1059,7 +1123,7 @@ $names.vesselOS：
 &lt;div class=&quot;chat&quot;&gt;$names.player，检测到未知引力源，详细信息已存入档案。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;div class=&quot;chat&quot;&gt;能否确定未知引力源是什么？&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;能否确定未知引力源的性质？&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
 &lt;div class=&quot;chat&quot;&gt;抱歉，仍在追踪。&lt;/div&gt;
@@ -1189,7 +1253,7 @@ $names.player：
 &lt;div class=&quot;chat&quot;&gt;采纳，那么挡流板的问题如何解决？&lt;/div&gt;
 &lt;br/&gt;
 船员H：
-&lt;div class=&quot;chat&quot;&gt;挡流板的可承受温度大概在xxx℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;挡流板的可承受温度大概在42000℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
 &lt;div class=&quot;chat&quot;&gt;采纳，其他人还有更好的建议或疑问吗？&lt;/div&gt;
