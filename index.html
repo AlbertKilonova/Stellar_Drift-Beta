@@ -245,8 +245,36 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
   border: 1px solid #444;
 }
 
+input[type="text"] {
+  min-width: 0px;
+}
+
+.archiveChat {
+  padding: 10px;
+  border: 1px solid #444;
+}
+
 .chat {
-  
+  padding-top: 5px;
+  padding-left: 10px;
+  margin-top: 2px;
+  margin-left: 15px;
+  border: 1px solid #444;
+}
+
+.chat:hover {
+  border: 1px solid #fff;
+}
+
+.tips {
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #444;
+}
+
+.tips:hover {
+  border: 1px solid #fff;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/***********************************************************************************************************************
 
 	locale/zh-CN.js – 简体中文
@@ -928,8 +956,54 @@ Sub~~script~~
 &lt;&lt;if $archives.logbook.II&gt;&gt;
 &lt;li&gt;[[CL_异常舰体故障_机械故障_C103]]&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;if $archives.logbook.III&gt;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="17" name="CL_异常舰体故障_机械故障_C103" tags="" position="300,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-</tw-passagedata><tw-passagedata pid="18" name="CL_EP_GW_C102" tags="nobr" position="150,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;h1&gt;CL_异常舰体状态_机械故障[C103]&lt;/h1&gt;
+&lt;hr/&gt;
+&lt;h3&gt;CL_异常舰体状态_机械故障&lt;/h3&gt;
+记录时间：E_00_00_00@00:00:00
+&lt;br/&gt;
+记录坐标：@@color:red;无法定位@@
+&lt;br/&gt;
+日志信息：
+&lt;div class=&quot;archiveChat&quot;&gt;
+&lt;div class=&quot;tips&quot;&gt;应急能源载入&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;应急模块载入&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;舰船系统处于离线状态&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;尝试重启&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;尝试唤起领航员&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;失败&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;尝试将操作权限移交$names.vesselOS&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;成功&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;重置应急模块&lt;/div&gt;
+&lt;br/&gt;
+$names.vesselOS：
+&lt;div class=&quot;chat&quot;&gt;已接收操作权限。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;检查舰船内生命特征状态。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;休眠仓内人员生命体征正常。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;舰桥处有微弱生命体征波动。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;确认生命体身份：$names.player&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;充入休眠液，稳定领航员状态。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;检测舰体状态。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;机械结构损坏7%&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试确认坐标。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;失败。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试确认时间。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;失败。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试联系救援。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;失败。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试启动引擎模块。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;成功。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试启动传感器分析当前星域情况。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;成功。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;尝试分析......&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;光谱分析结果报告。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;开始舰船自检。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;舰船状态危险，准备就近迫降。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;记录结束&lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="CL_EP_GW_C102" tags="nobr" position="150,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;h1&gt;CL_EP_GW[C102]&lt;/h1&gt;
 &lt;hr/&gt;
 &lt;h3&gt;CL_EP_GW_01&lt;/h3&gt;
@@ -981,26 +1055,20 @@ Sub~~script~~
 &lt;br/&gt;
 对话记录：
 &lt;div class=&quot;archiveChat&quot;&gt;
-&lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;$names.player，检测到未知引力源，详细信息已存入档案。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;$names.player，检测到未知引力源，详细信息已存入档案。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;能否确定未知引力源是什么？&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;能否确定未知引力源是什么？&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;抱歉，仍在追踪。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;抱歉，仍在追踪。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;继续跟进观察。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;继续跟进观察。&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;好的。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;好的。&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;
 已归入执行队列
 &lt;/div&gt;
@@ -1024,47 +1092,37 @@ $names.vesselOS：
 对话记录：
 &lt;div class=&quot;archiveChat&quot;&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;$names.player，未知引力源已确认为黑洞。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;$names.player，未知引力源已确认为黑洞。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;立即启动引擎逃逸！&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;立即启动引擎逃逸！&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;已尝试点火。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;但左引擎挡流板被吸入黑洞的宇宙尘埃击中，变形挡住了引擎喷口。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;现在舰船已偏航，正向黑洞坠入。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;已尝试点火。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;但左引擎挡流板被吸入黑洞的宇宙尘埃击中，变形挡住了引擎喷口。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;现在舰船已偏航，正向黑洞坠入。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;还有多久？&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;还有多久？&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;大约还剩1小时46分钟。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;大约还剩2小时46分钟。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;通知全舰人员，到舰桥下集合。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;通知全舰人员，到舰桥下集合。&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;好的。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;好的。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;还有......&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;还有......&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;后面部分被人为截断&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;记录中断&lt;/div&gt;
 &lt;/div&gt;
 &lt;br/&gt;
 &lt;h3&gt;CL_EP_GW_05&lt;/h3&gt;
 &lt;hr/&gt;
-记录时间：Ｎ_17_04_27@11:46:36
+记录时间：Ｎ_17_04_27@10:46:36
 &lt;br/&gt;
 记录坐标：@@color:red;GRO J1655-40@@
 &lt;br/&gt;
@@ -1075,128 +1133,138 @@ $names.player：
 对话记录：
 &lt;div class=&quot;archiveChat&quot;&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;同志们。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;现在我们遭遇了一个严重的问题。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我们的舰船误入黑洞引力范围，且左引擎受损变形。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;同志们。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;现在我们遭遇了一个严重的问题。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;我们的舰船误入黑洞引力范围，且左引擎受损变形。&lt;/div&gt;
 &lt;br/&gt;
 船员A：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;太好了，我们完蛋了。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;太好了，我们完蛋了。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;再说这种话把你扔出去。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;现在我们需要讨论逃生办法。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;再说这种话把你扔出去。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;现在我们需要讨论逃生办法。&lt;/div&gt;
 &lt;br/&gt;
 船员B：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;可电脑说我们死定了。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;可电脑说我们死定了。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;即使概率只有0.001我们也要去争取。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;即使概率只有0.001我们也要去争取。&lt;/div&gt;
 &lt;br/&gt;
 船员C：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;可以尝试减重。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;丢弃舰船里一些东西来减轻质量。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;比如一些船员。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;可以尝试减重。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;丢弃舰船里一些东西来减轻质量。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;比如一些船员。&lt;/div&gt;
 &lt;br/&gt;
 船员们：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;可以先把你扔出去。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;可以先把你扔出去。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;驳回。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;先不说道德问题，即使将全舰所有不重要的东西都扔掉，也无法摆脱黑洞引力。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;减轻质量无法提供推力，这样只是在浪费资源。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;驳回。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;先不说道德问题，即使将全舰所有不重要的东西都扔掉，也无法摆脱黑洞引力。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;减轻质量无法提供推力，这样只是在浪费资源。&lt;/div&gt;
 &lt;br/&gt;
 船员D：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我们可以派一些人出去拆掉挡流板。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;这样左引擎就可以恢复推力。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;我们可以派一些人出去拆掉挡流板。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;这样左引擎就可以恢复推力。&lt;/div&gt;
 &lt;br/&gt;
 船员E：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;但是我们现在正在黑洞超吸引力范围内。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;一旦派人出去，潮汐力会瞬间将他撕碎。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;并且我们舰船的气密仓也没有那么高的机械强度。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;一旦打开舱门，整艘飞船都会被撕碎。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;但是我们现在正在黑洞引力范围内。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;一旦派人出去，潮汐力会瞬间将他撕碎。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;并且我们舰船的气密仓也没有那么高的机械强度。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;一旦打开舱门，整艘飞船都会被撕碎。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;驳回。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;驳回。&lt;/div&gt;
 &lt;br/&gt;
 船员F：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我们的逃生艇质量轻，可以尝试使用逃生艇逃离。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;我们的逃生艇质量轻，可以尝试使用逃生艇逃离。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;驳回，逃生艇的燃料根本不够我们到离这最近的星球。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;驳回，逃生艇的燃料根本不够我们到离这最近的星球。&lt;/div&gt;
 &lt;br/&gt;
 船员G：
+&lt;div class=&quot;chat&quot;&gt;这颗黑洞质量比较大，潮汐力在靠近视界的那段反而会更小，我们可以尝试利用引力弹弓。&lt;/div&gt;
 &lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;这颗黑洞质量比较大，潮汐力在靠近视界的那段反而会更小，我们可以尝试利用引力弹弓。&lt;/span&gt;
-&lt;br/&gt;
-$names.palyer：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;采纳，那么挡流板的问题如何解决？&lt;/span&gt;
+$names.player：
+&lt;div class=&quot;chat&quot;&gt;采纳，那么挡流板的问题如何解决？&lt;/div&gt;
 &lt;br/&gt;
 船员H：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;挡流板的可承受温度大概在xxx℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;挡流板的可承受温度大概在xxx℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;采纳，其他人还有更好的建议或疑问吗？&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;采纳，其他人还有更好的建议或疑问吗？&lt;/div&gt;
 &lt;br/&gt;
 船员I：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我有疑问。&lt;/span&gt;
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;这样做要很靠近黑洞，万一操作不慎我们都会掉进去。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;我有疑问。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;这样做要很靠近黑洞，万一操作不慎我们都会掉进去。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;所以有人愿意赌吗？&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;所以有人愿意赌吗？&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;沉默&lt;/div&gt;
 船员们：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我们愿意！&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;我们愿意！&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;好的，全舰人员进入休眠状态！&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;好的，全舰人员进入休眠状态！&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;船员依次进入休眠状态&lt;/div&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;$names.player我有个建议。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;$names.player我有个建议。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;哦？说说看。&lt;/span&gt;
+&lt;div class=&quot;chat&quot;&gt;哦？说说看。&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
-&lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;我可以将冷却液管道通到驾驶舱内，防止意外。&lt;/sapn&gt;
+&lt;div class=&quot;chat&quot;&gt;我可以将休眠液管道通到驾驶舱内，防止意外。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
+&lt;div class=&quot;chat&quot;&gt;好，听你的。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;记录结束&lt;/div&gt;
+&lt;/div&gt;
 &lt;br/&gt;
-&lt;span class=&quot;chat&quot;&gt;哈哈，好。听你的。&lt;/span&gt;
+&lt;h3&gt;CL_EP_GW_06&lt;/h3&gt;
+&lt;hr/&gt;
+记录时间：Ｎ_77_77_77@77:77:7777
+&lt;br/&gt;
+记录坐标：@@color:red;GRO J1655-40@@
+&lt;br/&gt;
+任务目标：过载左引擎以烧融挡流板，并利用引力弹弓效应加速逃逸
+&lt;br/&gt;
+对话记录：
+&lt;div class=&quot;archiveChat&quot;&gt;
+$names.player：
+&lt;div class=&quot;chat&quot;&gt;$names.vesselOS。&lt;/div&gt;
+&lt;br/&gt;
+$names.vesselOS：
+&lt;div class=&quot;chat&quot;&gt;在，什么事？&lt;/div&gt;
+&lt;br/&gt;
+$names.player：
+&lt;div class=&quot;chat&quot;&gt;如果我冲破奇点会怎样？&lt;/div&gt;
+&lt;br/&gt;
+$names.vesselOS：
+&lt;div class=&quot;chat&quot;&gt;当您进入视界后，一切都没有意义了。&lt;/div&gt;
+&lt;br/&gt;
+$names.player：
+&lt;div class=&quot;chat&quot;&gt;嗯......&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;那让我们开始吧。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;左引擎开始过载运行。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：左引擎已过载&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;忽略。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：冷却系统离线&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;忽略。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：舰船机械结构损毁&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;关闭主引擎。&lt;/div&gt;
+&lt;br/&gt;
+$names.vesselOS：
+&lt;div class=&quot;chat&quot;&gt;左右引擎将于距视界面外20km处点火。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：舰船振幅过高&lt;/div&gt;
+$names.player：
+&lt;div class=&quot;chat&quot;&gt;忽略。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：舰船外有大量尘埃划过&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;忽略。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：舰船姿态控制引擎离线&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;重启。&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;警告：舰船机械结构受损&lt;/div&gt;
+&lt;div class=&quot;tips&quot;&gt;系统崩溃，记录中断&lt;/div&gt;
 &lt;/div&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
