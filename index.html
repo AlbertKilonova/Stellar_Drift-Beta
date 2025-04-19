@@ -200,6 +200,7 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 /* StoryCaption伪menu链接按钮 */
 #story-caption a {
   display: block;
+  user-select: none;
   background-color: transparent;
   text-align: center;
   text-decoration: none;
@@ -212,13 +213,14 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 }
 
 #story-caption a:hover {
-  background-color: #444;
-  border-color: #eee;
+  background-color: #2a7dde;
+  border-color: #fff;
 }
 
 #archive-list {
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
 }
+
 #archive-list li {
   position: relative;
   padding: 10px 0;
@@ -226,6 +228,7 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
   list-style-type: disc;
   color: #fff;
 }
+
 #archive-list li::after {
   content: "";
   position: absolute;
@@ -235,12 +238,15 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
   height: 1px;
   background: linear-gradient(90deg, #4169E1, #9370DB, #8A2BE2, #000);
 }
+
 #history-forward {
   visibility: hidden;
 }
+
 #history-backward {
   visibility: hidden;
 }
+
 #ui-bar-tray {
   border: 1px solid #444;
 }
@@ -248,6 +254,113 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 /* twine输入框 */
 input[type="text"] {
   min-width: 0px;
+}
+
+input:hover {
+  background-color: #3D5670;
+}
+
+body {
+  background-color: #0f1b2b;
+  color: #e0e0e0;
+}
+
+#init-screen {
+  background-color: #0f1b2b;
+  color: #e0e0e0;
+}
+
+#ui-bar {
+  border-right: 1px solid #404040;
+  background-color: #1d2d40;
+}
+
+#ui-bar hr {
+  border-color: #444;
+}
+
+#ui-bar-tray button { 
+  user-select: none;
+	background-color: transparent;
+	border: 1px solid #444;
+}
+
+#ui-bar-tray button:hover { 
+	background-color: #2a7dde; 
+	border-color: #fff;
+}
+
+#ui-bar-tray button:disabled {  
+	color: #404040;
+	background-color: transparent;
+	border-color: #444;
+}
+
+#menu li a:hover{
+  user-select: none;
+  background-color: #2a7dde;
+  border-color: #fff;
+}
+
+a {
+  color: #2A7DDE;
+  text-decoration: none;
+  transition: all 160ms ease-out;
+}
+
+a:hover {
+  color: #4A90E2;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  color: #e0e0e0;
+  padding: 5px;
+  background-color: #1a2f45;
+  border: 1px solid #3d5670;
+  line-height: normal;
+  transition: 160ms;
+  user-select: none;
+}
+
+html[data-outlines] button:focus,
+button:hover {
+  background-color: #1a7dde;
+  border-color: #ffffff;
+}
+
+button:disabled {
+  background-color: #444;
+  border: 1px solid #666;
+}
+
+#ui-dialog-titlebar {
+  background-color: #1d2d40;
+}
+
+#ui-dialog-body {
+  background-color: #0f1b2b;
+  border: 1px solid #444;
+}
+
+#ui-dialog-body.saves > h2 {
+  background-color: #0A111A;
+}
+
+#ui-dialog-body.saves #saves-list button {
+  color: #e0e0e0;
+  border-color: #1a7dde;
+}
+
+#ui-dialog-body.saves #saves-list button:disabled {
+  color: #e0e0e0;
+  border-color: #1a7dde;
+}
+
+#ui-dialog-body.saves #saves-list button:not(:disabled):hover {
+  background-color: #1a7dde;
+  border-color: #fff;
 }
 
 /* 档案馆边框 */
@@ -294,7 +407,7 @@ input[type="text"] {
   display: inline-block;
   width: 0;
   height: 100%;
-  background-color: #00BFFF4F;
+  background-color: #1a2f45;
   vertical-align: middle;
   z-index: -1;
   transition: all 160ms ease-out;
@@ -319,7 +432,7 @@ input[type="text"] {
 
 .tips:hover {
   border: 1px solid #fff;
-  background-color: #00bfff4f;
+  background-color: #1a2f45;
   border-radius: 5px;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/***********************************************************************************************************************
 
@@ -873,9 +986,8 @@ macros["playMelody"] = {
 
 /* 不会触发点击继续的元素 */
 &lt;&lt;ignore &quot;a&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="StoryShare" tags="" position="0,600" size="100,100">https://albert-kilonova.pages.dev/</tw-passagedata><tw-passagedata pid="7" name="StorySubtitle" tags="" position="0,300" size="100,100">/* 子标题 */</tw-passagedata><tw-passagedata pid="8" name="bridge" tags="nobr" position="900,0" size="100,100">&lt;&lt;set $passage = &quot;bridge&quot;&gt;&gt;
-舰桥
+&lt;h3 style=&quot;font-style: italic;text-align: center;&quot;&gt;————舰桥————&lt;/h3&gt;
 &lt;hr/&gt;
-$names.vesselOS：
 &lt;&lt;type 40ms&gt;&gt;欢迎回来，$names.player。&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="openingStoryline" tags="nobr" position="700,150" size="100,100">&lt;&lt;timed 0.5s t8n&gt;&gt;
 	？？？：&lt;&lt;spoiler 2 0&gt;&gt;&lt;&lt;type 40ms&gt;&gt;请求连接休眠仓。&lt;&lt;/type&gt;&gt;&lt;&lt;/spoiler&gt;&gt;
 	&lt;&lt;next 1.5s&gt;&gt;
@@ -979,7 +1091,7 @@ Sub~~script~~
 !!!Level 3 Heading
 !!!!Level 4 Heading
 !!!!!Level 5 Heading
-!!!!!!Level 6 Heading</tw-passagedata><tw-passagedata pid="14" name="音效库" tags="" position="150,800" size="100,100">&lt;&lt;playMelody save&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="openingStoryline0_1" tags="nobr" position="700,450" size="100,100">&lt;&lt;first&gt;&gt;
+!!!!!!Level 6 Heading</tw-passagedata><tw-passagedata pid="14" name="音效库" tags="" position="0,1000" size="100,100">&lt;&lt;playMelody save&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="openingStoryline0_1" tags="nobr" position="700,450" size="100,100">&lt;&lt;first&gt;&gt;
   &lt;&lt;timed 0.5s t8n&gt;&gt;
     $names.vesselOS：
     &lt;&lt;type 40ms&gt;&gt;您是$names.warship的领航员。&lt;&lt;/type&gt;&gt;
