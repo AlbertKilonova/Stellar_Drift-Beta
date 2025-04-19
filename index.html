@@ -197,84 +197,268 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 	display: inline-block;
 }
 
+#notify {
+  border: 1px solid #1a7dde;
+  background-color: #1d2d40;
+  color: #e0e0e0;
+}
+
 /* StoryCaption伪menu链接按钮 */
 #story-caption a {
   display: block;
+  user-select: none;
   background-color: transparent;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   display: block;
   padding: 0.25em 0.75em;
-  border: 1px solid #444;
+  border: 1px solid #1a7dde;
   color: #eee;
   transition: background-color 0.5s;
 }
 
 #story-caption a:hover {
-  background-color: #444;
-  border-color: #eee;
+  background-color: #2a7dde;
+  border-color: #fff;
 }
 
 #archive-list {
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+  border: 1px solid #1a2d40;
 }
+
 #archive-list li {
   position: relative;
-  padding: 10px 0;
+  padding: 10px;
   margin-bottom: 10px;
   list-style-type: disc;
-  color: #fff;
+  color: #e0e0e0;
 }
-#archive-list li::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, #4169E1, #9370DB, #8A2BE2, #000);
-}
+
+
 #history-forward {
   visibility: hidden;
 }
+
 #history-backward {
   visibility: hidden;
 }
+
 #ui-bar-tray {
-  border: 1px solid #444;
+  border: 1px solid #1a7dde;
 }
 
+/* twine输入框 */
 input[type="text"] {
   min-width: 0px;
 }
 
-.archiveChat {
-  padding: 10px;
-  border: 1px solid #444;
+input:hover {
+  background-color: #3D5670;
 }
 
+body {
+  background-color: #0f1b2b;
+  color: #e0e0e0;
+}
+
+#init-screen {
+  background-color: #0f1b2b;
+  color: #e0e0e0;
+}
+
+#ui-bar {
+  border-right: 1px solid #1a7dde;
+  background-color: #1d2d40;
+}
+
+#ui-bar hr {
+  border-color: #2a3b4c;
+}
+
+#ui-bar-tray button { 
+  user-select: none;
+	background-color: transparent;
+	border: 1px solid #1a7dde;
+}
+
+#ui-bar-tray button:hover { 
+	background-color: #2a7dde; 
+	border-color: #fff;
+}
+
+#ui-bar-tray button:disabled {  
+	color: #e0e0e0;
+	background-color: transparent;
+	border-color: #1a7dde;
+}
+
+#menu li a {
+  border-color: #1a7dde;
+}
+
+#menu li a:hover{
+  user-select: none;
+  background-color: #2a7dde;
+  border-color: #fff;
+}
+
+hr {
+  border-color: #2a3b4c;
+}
+
+a {
+  color: #2A7DDE;
+  text-decoration: none;
+  transition: all 160ms ease-out;
+}
+
+a:hover {
+  color: #4A90E2;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  color: #e0e0e0;
+  padding: 5px;
+  background-color: #1a2f45;
+  border: 1px solid #1a7dde;
+  line-height: normal;
+  transition: 160ms;
+  user-select: none;
+}
+
+html[data-outlines] button:focus,
+button:hover {
+  background-color: #1a7dde;
+  border-color: #ffffff;
+}
+
+button:disabled {
+  background-color: #444;
+  border: 1px solid #666;
+}
+
+#ui-dialog-titlebar {
+  background-color: #1d2d40;
+}
+
+#ui-dialog-body {
+  background-color: #0f1b2b;
+  border: 1px solid #2a3b4c;
+}
+
+#ui-dialog-body.saves > *:not(:first-child) {
+  border-top: 1px solid #1a2d40;
+}
+
+#ui-dialog-body.list li a:hover {
+  color: #e0e0e0;
+  background-color: #1a7dde;
+}
+
+td {
+  border: 1px solid #1a2d40;
+}
+
+#ui-dialog-body.saves > h2 {
+  background-color: #0A111A;
+}
+
+#ui-dialog-body.saves .empty {
+  color: #e0e0e0;
+}
+
+#ui-dialog-body.saves #saves-list button {
+  color: #e0e0e0;
+  border-color: #1a7dde;
+}
+
+#ui-dialog-body.saves #saves-list button:disabled {
+  color: #e0e0e0;
+  border-color: #1a7dde;
+}
+
+#ui-dialog-body.saves #saves-list button:not(:disabled):hover {
+  background-color: #1a7dde;
+  border-color: #fff;
+}
+
+/* 档案馆边框 */
+.archiveChat {
+  padding: 10px;
+  border: 1px solid #1a2d40;
+}
+
+/* 对话消息样式 */
 .chat {
-  padding-top: 5px;
-  padding-left: 10px;
-  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
   margin-left: 15px;
-  border: 1px solid #444;
+  padding-left: 8px;
+  border: 1px solid #1a7dde;
+  transition: all 160ms ease-out;
+  position: relative;
+}
+
+.chat::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 5px;
+  height: 85%;
+  background-color: #3498db;
+  margin-left: 2px;
+  margin-right: 2px;
+  vertical-align: middle;
+  transition: all 160ms ease-out;
 }
 
 .chat:hover {
   border: 1px solid #fff;
+  padding-left: 3px;
 }
 
+.chat::after {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  background-color: #1a2f45;
+  vertical-align: middle;
+  z-index: -1;
+  transition: all 160ms ease-out;
+}
+
+.chat:hover::before {
+  width: 0;
+}
+
+.chat:hover::after {
+  width: 100%;
+}
+
+/* 提示框样式 */
 .tips {
   margin-top: 5px;
   padding: 5px;
+  text-align: center;
   border-radius: 10px;
-  border: 1px solid #444;
+  border: 1px solid #1a7dde;
+  transition: all 160ms ease-out;
 }
 
 .tips:hover {
+  font-size: 1.2em;
   border: 1px solid #fff;
+  background-color: #1a2f45;
+  border-radius: 5px;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/***********************************************************************************************************************
 
 	locale/zh-CN.js – 简体中文
@@ -826,7 +1010,10 @@ macros["playMelody"] = {
 &lt;&lt;/newmeter&gt;&gt;
 
 /* 不会触发点击继续的元素 */
-&lt;&lt;ignore &quot;a&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="StoryShare" tags="" position="0,600" size="100,100">https://albert-kilonova.pages.dev/</tw-passagedata><tw-passagedata pid="7" name="StorySubtitle" tags="" position="0,300" size="100,100">/* 子标题 */</tw-passagedata><tw-passagedata pid="8" name="bridge" tags="" position="900,0" size="100,100">&#39;&#39;这里是舰桥&#39;&#39;</tw-passagedata><tw-passagedata pid="9" name="openingStoryline" tags="nobr" position="700,150" size="100,100">&lt;&lt;timed 0.5s t8n&gt;&gt;
+&lt;&lt;ignore &quot;a&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="StoryShare" tags="" position="0,600" size="100,100">https://albert-kilonova.pages.dev/</tw-passagedata><tw-passagedata pid="7" name="StorySubtitle" tags="" position="0,300" size="100,100">/* 子标题 */</tw-passagedata><tw-passagedata pid="8" name="bridge" tags="nobr" position="900,0" size="100,100">&lt;&lt;set $passage = &quot;bridge&quot;&gt;&gt;
+&lt;h3 style=&quot;font-style: italic;text-align: center;&quot;&gt;————舰桥————&lt;/h3&gt;
+&lt;hr/&gt;
+&lt;&lt;type 40ms&gt;&gt;欢迎回来，$names.player。&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="openingStoryline" tags="nobr" position="700,150" size="100,100">&lt;&lt;timed 0.5s t8n&gt;&gt;
 	？？？：&lt;&lt;spoiler 2 0&gt;&gt;&lt;&lt;type 40ms&gt;&gt;请求连接休眠仓。&lt;&lt;/type&gt;&gt;&lt;&lt;/spoiler&gt;&gt;
 	&lt;&lt;next 1.5s&gt;&gt;
 	&lt;&lt;spoiler 2 0&gt;&gt;&lt;&lt;type 40ms&gt;&gt;请求通过，解除休眠状态……&lt;&lt;/type&gt;&gt;&lt;&lt;/spoiler&gt;&gt;
@@ -871,10 +1058,15 @@ macros["playMelody"] = {
 	&lt;span id=&quot;NameText&quot;&gt;
       &lt;&lt;textbox &quot;$names.player&quot; &quot;你的名字……&quot;&gt;&gt;
       &lt;&lt;button &quot;确认&quot;&gt;&gt;
-        &lt;&lt;if $names.player == &quot;你的名字……&quot; or $names.player == &quot;&quot;&gt;&gt;
+        &lt;&lt;if $names.player == &quot;你的名字……&quot; or $names.player == &quot;&quot; or $names.player.substring(0, 1) == &quot; &quot;&gt;&gt;
             &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;
             &lt;br/&gt;
             &lt;&lt;shake 0.5s&gt;&gt;^^@@color:red;请输入你的名字@@^^&lt;&lt;/shake&gt;&gt;
+            &lt;&lt;/replace&gt;&gt;
+        &lt;&lt;elseif $names.player.length &gt; 8&gt;&gt;
+            &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;
+            &lt;br/&gt;
+            &lt;&lt;shake 0.5s&gt;&gt;^^@@color:red;名称字数不得超过8个字@@^^&lt;&lt;/shake&gt;&gt;
             &lt;&lt;/replace&gt;&gt;
         &lt;&lt;else&gt;&gt;
             &lt;&lt;replace &quot;#NameWarn&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -924,7 +1116,7 @@ Sub~~script~~
 !!!Level 3 Heading
 !!!!Level 4 Heading
 !!!!!Level 5 Heading
-!!!!!!Level 6 Heading</tw-passagedata><tw-passagedata pid="14" name="音效库" tags="" position="150,800" size="100,100">&lt;&lt;playMelody save&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="openingStoryline0_1" tags="nobr" position="700,450" size="100,100">&lt;&lt;first&gt;&gt;
+!!!!!!Level 6 Heading</tw-passagedata><tw-passagedata pid="14" name="音效库" tags="" position="0,1000" size="100,100">&lt;&lt;playMelody save&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="openingStoryline0_1" tags="nobr" position="700,450" size="100,100">&lt;&lt;first&gt;&gt;
   &lt;&lt;timed 0.5s t8n&gt;&gt;
     $names.vesselOS：
     &lt;&lt;type 40ms&gt;&gt;您是$names.warship的领航员。&lt;&lt;/type&gt;&gt;
@@ -942,27 +1134,40 @@ Sub~~script~~
     &lt;&lt;set $passage = &quot;openingStoryline0_1&quot;&gt;&gt;
     &lt;&lt;redo&gt;&gt;
     &lt;&lt;type 40ms&gt;&gt;现在您可以随时查看它&lt;&lt;/type&gt;&gt;
+    &lt;&lt;next&gt;&gt;
+    &lt;&lt;if UIBar.isStowed()&gt;&gt;
+    &lt;&lt;run UIBar.unstow(false)&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
   &lt;&lt;/timed&gt;&gt;
 &lt;&lt;finally&gt;&gt;
+  &lt;&lt;timed 0s t8n&gt;&gt;
   $names.vesselOS：
   &lt;&lt;type 40ms&gt;&gt;欢迎回来，领航员&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next 1.5s&gt;&gt;
+  &lt;&lt;type 40ms&gt;&gt;相信您已经了解了大致情况&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next&gt;&gt;
+  &lt;&lt;type 40ms&gt;&gt;现在请随我来到舰桥&lt;&lt;/type&gt;&gt;
+  &lt;&lt;next&gt;&gt;
+  &lt;hr/&gt;
+  [[前往舰桥|bridge][$firstLoad = false]]
+  &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/first&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Archive" tags="nobr" position="150,150" size="100,100">&lt;h1&gt;档案库&lt;/h1&gt;
 &lt;hr/&gt;
 &lt;&lt;button &quot;&lt;&lt;返回&quot; $passage&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;ul id=&quot;archive-list&quot;&gt;
 &lt;&lt;if $archives.logbook.I&gt;&gt;
-&lt;li&gt;[[CL_EP_GW_C102]]&lt;/li&gt;
+&lt;li&gt;[[CL_EP_GW_C102]]〔异常引力现象〕&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $archives.logbook.II&gt;&gt;
-&lt;li&gt;[[CL_异常舰体故障_机械故障_C103]]&lt;/li&gt;
+&lt;li&gt;[[CL_MECH_FAL_C103]]〔机械结构故障〕&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $archives.logbook.III&gt;&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="17" name="CL_异常舰体故障_机械故障_C103" tags="" position="300,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;h1&gt;CL_异常舰体状态_机械故障[C103]&lt;/h1&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="17" name="CL_MECH_FAL_C103" tags="nobr" position="300,300" size="100,100">&lt;&lt;button &quot;&lt;&lt;返回&quot; &quot;Archive&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;h1&gt;CL_MECH_FAL[C103]&lt;/h1&gt;
 &lt;hr/&gt;
-&lt;h3&gt;CL_异常舰体状态_机械故障&lt;/h3&gt;
+&lt;h3&gt;CL_MECH_FAL&lt;/h3&gt;
 记录时间：E_00_00_00@00:00:00
 &lt;br/&gt;
 记录坐标：@@color:red;无法定位@@
@@ -1019,7 +1224,7 @@ $names.vesselOS：
 &lt;br/&gt;
 处理建议：静默处理，重置引力探针
 &lt;br/&gt;
-优先级：@@color: #00FF00;5@@
+优先级：5
 &lt;br/&gt;
 处理结果：CL_EP_GW_01事件@@color:red;未解决@@
 &lt;br/&gt;
@@ -1036,7 +1241,7 @@ $names.vesselOS：
 &lt;br/&gt;
 处理建议：冷重启引力探针
 &lt;br/&gt;
-优先级：@@color:#00FF00;5@@
+优先级：5
 &lt;br/&gt;
 处理结果：CL_EP_GW_02事件@@color:red;未解决@@
 &lt;br/&gt;
@@ -1059,7 +1264,7 @@ $names.vesselOS：
 &lt;div class=&quot;chat&quot;&gt;$names.player，检测到未知引力源，详细信息已存入档案。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
-&lt;div class=&quot;chat&quot;&gt;能否确定未知引力源是什么？&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;能否确定未知引力源的性质？&lt;/div&gt;
 &lt;br/&gt;
 $names.vesselOS：
 &lt;div class=&quot;chat&quot;&gt;抱歉，仍在追踪。&lt;/div&gt;
@@ -1189,7 +1394,7 @@ $names.player：
 &lt;div class=&quot;chat&quot;&gt;采纳，那么挡流板的问题如何解决？&lt;/div&gt;
 &lt;br/&gt;
 船员H：
-&lt;div class=&quot;chat&quot;&gt;挡流板的可承受温度大概在xxx℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;挡流板的可承受温度大概在42000℃，我们可以中断挡流板的冷却液系统，同时过载运行左引擎，烧熔它。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
 &lt;div class=&quot;chat&quot;&gt;采纳，其他人还有更好的建议或疑问吗？&lt;/div&gt;
@@ -1202,7 +1407,7 @@ $names.player：
 &lt;div class=&quot;chat&quot;&gt;所以有人愿意赌吗？&lt;/div&gt;
 &lt;div class=&quot;tips&quot;&gt;沉默&lt;/div&gt;
 船员们：
-&lt;div class=&quot;chat&quot;&gt;我们愿意！&lt;/div&gt;
+&lt;div class=&quot;chat&quot;&gt;愿意一试。&lt;/div&gt;
 &lt;br/&gt;
 $names.player：
 &lt;div class=&quot;chat&quot;&gt;好的，全舰人员进入休眠状态！&lt;/div&gt;
