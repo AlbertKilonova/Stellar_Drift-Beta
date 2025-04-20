@@ -110,7 +110,41 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 #ui-dialog-body.popover{background:0 0;border:0;padding:0}.popover #ui-dialog-titlebar{background:0 0}.popover #ui-dialog-title{display:none}.popover #ui-dialog-close{position:fixed;display:block;top:0;right:0;height:3em}.popover #ui-dialog-close:hover{background-color:transparent;border-color:transparent;color:#c22}#ui-overlay.popover.opaque{opacity:1}#ui-overlay.popover.transparent{opacity:0}#ui-overlay.popover.invert{background-color:#f8f8f8}#ui-dialog-body.popover.invert{color:#111}
 /* end popover.min.css */
 /* notify.min.css, by chapel; for use with notify.js; v1.0.0 */
-#notify{position:fixed;display:block;width:16em;right:-20em;top:2em;padding:.5em;background-color:#fff;color:#000;-webkit-transition:right .3s;-moz-transition:right .3s;-o-transition:right .3s;transition:right .3s}#notify.open{right:0}
+/* 通知弹窗宏部分 */
+#notify-container {
+    position: fixed;
+    top: 2em;
+    right: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    max-width: 20em;
+}
+
+/*通知元素部分，可自行修改边框、配色*/
+.notify-item {
+    display: block;
+    width: 16em;
+    padding: 0.2em;
+    border: 1px solid;
+    color: #e0e0e0;
+    background-color: #1d2d40;
+    border-color: #1a7dde;
+    position: relative;
+    right: -20em;
+    opacity: 0;
+    transition: right 160ms ease-in-out, opacity 0.5s;
+}
+
+.notify-item.open {
+    right: 0;
+    opacity: 1;
+}
+
+.notify-item.close {
+    right: -20em;
+    opacity: 0;
+}
 /* end notify.min.css */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
@@ -205,27 +239,27 @@ ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-
 
 @keyframes init-loading-spin {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(1);
     border-radius: 20px;
     animation-timing-function: ease-in;
     }
   25% {
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(0.5);
     border-radius: 0px;
     animation-timing-function: linear;
     }
   50% {
-    transform: rotate(180deg);
+    transform: rotate(180deg) scale(1);
     border-radius: 20px;
     animation-timing-function: ease-out;
     }
   75% {
-    transform: rotate(270deg);
+    transform: rotate(270deg) scale(0.5);
     border-radius: 0px;
     animation-timing-function: linear;
     }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1);
     border-radius: 20px;
     animation-timing-function: ease-in;
   }
@@ -301,7 +335,7 @@ html[data-init="loading"] #init-loading::before {
 }
 
 #ui-bar-tray {
-  border: 1px solid #1a7dde;
+  border-bottom: 1px solid #1a7dde;
 }
 
 /* twine输入框 */
@@ -803,7 +837,89 @@ td {
 // end meters.min.js
 // notify.min.js, for SugarCube 2, by Chapel
 // v1.1.1, 2024-07-22, 336675ff2cabe5f729a5f30d86aa409cc8432726
-;!function(){var s=/\d+m?s$/;function a(s,a,e){"string"==typeof s&&("number"!=typeof a&&(a=!1),$(document).trigger({type:":notify",message:s,delay:a,class:e||""}))}$(document.body).append("<div id='notify'></div>"),$(document).on(":notify",(function(s){s.message&&"string"==typeof s.message&&(s.message.trim(),s.class?"string"==typeof s.class?s.class="open macro-notify "+s.class:Array.isArray(s.class)?s.class="open macro-notify "+s.class.join(" "):s.class="open macro-notify":s.class="open macro-notify",s.delay?("number"!=typeof s.delay&&(s.delay=Number(s.delay)),Number.isNaN(s.delay)&&(s.delay=2e3)):s.delay=2e3,$("#notify").empty().wiki(s.message).addClass(s.class),setTimeout((function(){$("#notify").removeClass()}),s.delay))})),Macro.add("notify",{tags:null,handler:function(){var e=this.payload[0].contents,t=!1,i=!1;if(this.args.length>0){var n=s.test(this.args[0]);"number"==typeof this.args[0]||n?(t=n?Util.fromCssTime(this.args[0]):this.args[0],i=this.args.length>1&&this.args.slice(1).flat(1/0)):i=this.args.flat(1/0).join(" ")}a(e,t,i)}}),setup.notify=a}();
+/* 原型:Chapel's Notify Macro，RyaraSUKI改造分支 */
+(function() {
+    var DEFAULT_TIME = 2000;
+    var isCssTime = /\d+m?s$/;
+    var QUEUE_DELAY = 150;
+    var notifyQueue = [];
+    var isNotifying = false;
+    $(document.body).append("<div id='notify-container'></div>");
+    function processQueue() {
+        if (notifyQueue.length === 0) {
+            isNotifying = false;
+            return;
+        }
+
+        isNotifying = true;
+        var ev = notifyQueue.shift();
+        var classList = 'macro-notify ';
+        if (ev.class) {
+            if (typeof ev.class === 'string') {
+                classList += ev.class;
+            } else if (Array.isArray(ev.class)) {
+                classList += ev.class.join(' ');
+            }
+        }
+        ev.delay = (typeof ev.delay === 'number' && !Number.isNaN(ev.delay)) ? ev.delay : DEFAULT_TIME;
+        var $newNotify = $('<div class="notify-item"></div>')
+            .addClass(classList)
+            .wiki(ev.message);
+        $('#notify-container').append($newNotify);
+        void $newNotify[0].offsetWidth;
+        setTimeout(() => {
+            $newNotify.addClass('open');
+        }, 20);
+        setTimeout(function() {
+            $newNotify.addClass('close');
+            setTimeout(function() {
+                $newNotify.slideUp(300, function() {
+                    $(this).remove();
+                });
+            }, 500);
+        }, ev.delay);
+        setTimeout(processQueue, QUEUE_DELAY);
+    }
+    $(document).on(':notify', function(ev) {
+        if (ev.message && typeof ev.message === 'string') {
+            ev.message = ev.message.trim();
+            notifyQueue.push(ev);
+            if (!isNotifying) {
+                processQueue();
+            }
+        }
+    });
+    function notify(message, time, classes) {
+        if (typeof message !== 'string') return;
+        if (typeof time !== 'number') time = false;
+        $(document).trigger({
+            type: ':notify',
+            message: message,
+            delay: time,
+            class: classes || ''
+        });
+    }
+    Macro.add('notify', {
+        tags: null,
+        handler: function() {
+            var msg = this.payload[0].contents,
+                time = false,
+                classes = false;
+
+            if (this.args.length > 0) {
+                var cssTime = isCssTime.test(this.args[0]);
+                if (typeof this.args[0] === 'number' || cssTime) {
+                    time = cssTime ? Util.fromCssTime(this.args[0]) : this.args[0];
+                    classes = (this.args.length > 1) ? this.args.slice(1).flat(Infinity) : false;
+                } else {
+                    classes = this.args.flat(Infinity).join(' ');
+                }
+            }
+            notify(msg, time, classes);
+        }
+    });
+    setup.notify = notify;
+})();
 // end notify.min.js
 // preload.min.js, for SugarCube 2, by Chapel
 // v1.1.0, 2024-07-22, 336675ff2cabe5f729a5f30d86aa409cc8432726
@@ -1190,12 +1306,15 @@ Sub~~script~~
     &lt;&lt;next&gt;&gt;
     &lt;&lt;type 40ms&gt;&gt;相关数据已存入档案库&lt;&lt;/type&gt;&gt;
     &lt;&lt;next&gt;&gt;
+    &lt;&lt;notify&gt;&gt;档案库已解锁&lt;&lt;/notify&gt;&gt;
+    &lt;&lt;next 80ms&gt;&gt;
     &lt;&lt;notify&gt;&gt;航行日志已存入档案库&lt;&lt;/notify&gt;&gt;
     &lt;&lt;set $archives.open = true&gt;&gt;
     &lt;&lt;set $archives.logbook.I = true&gt;&gt;
     &lt;&lt;set $archives.logbook.II = true&gt;&gt;
     &lt;&lt;set $passage = &quot;openingStoryline0_1&quot;&gt;&gt;
     &lt;&lt;redo&gt;&gt;
+    &lt;&lt;next 1.5s&gt;&gt;
     &lt;&lt;type 40ms&gt;&gt;现在您可以随时查看它&lt;&lt;/type&gt;&gt;
     &lt;&lt;next&gt;&gt;
     &lt;&lt;if UIBar.isStowed()&gt;&gt;
