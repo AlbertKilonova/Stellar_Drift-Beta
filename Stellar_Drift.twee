@@ -347,7 +347,7 @@ $names.vesselOS：
 
 
 :: StoryAuthor {"position":"0,450","size":"100,100"}
-作者：Albert_Kilonova
+/* 作者栏 */
 
 
 :: StoryBanner [nobr] {"position":"0,150","size":"100,100"}
@@ -365,7 +365,7 @@ $names.vesselOS：
 
 :: StoryDisplayTitle {"position":"0,0","size":"100,100"}
 /* 首页标题 */
-$location
+<<do>>$location<</do>>
 
 
 :: StoryInit {"position":"150,0","size":"100,100"}
@@ -403,7 +403,8 @@ $location
 
 
 :: StoryShare {"position":"0,600","size":"100,100"}
-https://albert-kilonova.pages.dev/
+<a href="https://albert-kilonova.pages.dev/">作者</a>
+<a href="https://www.baidu.com/">百度</a>
 
 
 :: StorySubtitle {"position":"0,300","size":"100,100"}
@@ -589,7 +590,114 @@ Sub~~script~~
 
 
 :: 音效库 {"position":"0,1000","size":"100,100"}
+/* 
+//音符映射表
+var noteFrequencies = {
+    "C0": 16.35, "C#0": 17.32, "Db0": 17.32, "D0": 18.35, "D#0": 19.45, "Eb0": 19.45,
+    "E0": 20.60, "F0": 21.83, "F#0": 23.12, "Gb0": 23.12, "G0": 24.50, "G#0": 25.96,
+    "Ab0": 25.96, "A0": 27.50, "A#0": 29.14, "Bb0": 29.14, "B0": 30.87,
+    "C1": 32.70, "C#1": 34.65, "Db1": 34.65, "D1": 36.71, "D#1": 38.89, "Eb1": 38.89,
+    "E1": 41.20, "F1": 43.65, "F#1": 46.25, "Gb1": 46.25, "G1": 49.00, "G#1": 51.91,
+    "Ab1": 51.91, "A1": 55.00, "A#1": 58.27, "Bb1": 58.27, "B1": 61.74,
+    "C2": 65.41, "C#2": 69.30, "Db2": 69.30, "D2": 73.42, "D#2": 77.78, "Eb2": 77.78,
+    "E2": 82.41, "F2": 87.31, "F#2": 92.50, "Gb2": 92.50, "G2": 98.00, "G#2": 103.83,
+    "Ab2": 103.83, "A2": 110.00, "A#2": 116.54, "Bb2": 116.54, "B2": 123.47,
+    "C3": 130.81, "C#3": 138.59, "Db3": 138.59, "D3": 146.83, "D#3": 155.56, "Eb3": 155.56,
+    "E3": 164.81, "F3": 174.61, "F#3": 185.00, "Gb3": 185.00, "G3": 196.00, "G#3": 207.65,
+    "Ab3": 207.65, "A3": 220.00, "A#3": 233.08, "Bb3": 233.08, "B3": 246.94,
+    "C4": 261.63, "C#4": 277.18, "Db4": 277.18, "D4": 293.66, "D#4": 311.13, "Eb4": 311.13,
+    "E4": 329.63, "F4": 349.23, "F#4": 369.99, "Gb4": 369.99, "G4": 392.00, "G#4": 415.30,
+    "Ab4": 415.30, "A4": 440.00, "A#4": 466.16, "Bb4": 466.16, "B4": 493.88,
+    "C5": 523.25, "C#5": 554.37, "Db5": 554.37, "D5": 587.33, "D#5": 622.25, "Eb5": 622.25,
+    "E5": 659.25, "F5": 698.46, "F#5": 739.99, "Gb5": 739.99, "G5": 783.99, "G#5": 830.61,
+    "Ab5": 830.61, "A5": 880.00, "A#5": 932.33, "Bb5": 932.33, "B5": 987.77,
+    "C6": 1046.50, "C#6": 1108.73, "Db6": 1108.73, "D6": 1174.66, "D#6": 1244.51, "Eb6": 1244.51,
+    "E6": 1318.51, "F6": 1396.91, "F#6": 1479.98, "Gb6": 1479.98, "G6": 1567.98, "G#6": 1661.22,
+    "Ab6": 1661.22, "A6": 1760.00, "A#6": 1864.66, "Bb6": 1864.66, "B6": 1975.53,
+    "C7": 2093.00, "C#7": 2217.46, "Db7": 2217.46, "D7": 2349.32, "D#7": 2489.02, "Eb7": 2489.02,
+    "E7": 2637.02, "F7": 2793.83, "F#7": 2959.96, "Gb7": 2959.96, "G7": 3135.96, "G#7": 3322.44,
+    "Ab7": 3322.44, "A7": 3520.00, "A#7": 3729.31, "Bb7": 3729.31, "B7": 3951.07,
+    "C8": 4186.01, "C#8": 4434.92, "Db8": 4434.92, "D8": 4698.64, "D#8": 4978.03, "Eb8": 4978.03,
+    "E8": 5274.04, "F8": 5587.65, "F#8": 5919.91, "Gb8": 5919.91, "G8": 6271.93, "G#8": 6644.88,
+    "Ab8": 6644.88, "A8": 7040.00, "A#8": 7458.62, "Bb8": 7458.62, "B8": 7902.13
+};
+var melodies = {
+    "save": [
+    { type: "square", note: "C6", volume: 0.7, duration: 0.1 },
+    { type: "sine", note: "G5", volume: 0.5, duration: 0.15 },
+    { type: "square", note: "E6", volume: 0.8, duration: 0.1 },
+    { type: "sawtooth", note: "C7", volume: 0.9, duration: 0.2 }
+  ],
+    "load": [
+        { type: "sawtooth", note: "G6", volume: 0.6, duration: 0.1 },
+        { type: "square", note: "E6", volume: 0.7, duration: 0.1 },
+        { type: "sine", note: "C6", volume: 0.5, duration: 0.2 },
+        { type: "triangle", note: "G5", volume: 0.4, duration: 0.3 }
+    ],
+    "archive": [
+        { type: "sine", note: "C5", volume: 0.3, duration: 0.1 },
+        { type: "square", note: "E5", volume: 0.6, duration: 0.1 },
+        { type: "sawtooth", note: "G5", volume: 0.7, duration: 0.1 },
+        { type: "triangle", note: "C6", volume: 0.8, duration: 0.2 },
+        { type: "sine", note: "G5", volume: 0.5, duration: 0.15 },
+        { type: "square", note: "E5", volume: 0.4, duration: 0.15 },
+        { type: "sawtooth", note: "C5", volume: 0.3, duration: 0.2 }
+    ],
+    "auto": [
+    { type: "triangle", note: "A4", volume: 0.3, duration: 0.1 },
+    { type: "sine", note: "E5", volume: 0.4, duration: 0.12 },
+    { type: "square", note: "C5", volume: 0.25, duration: 0.1 }
+  ]
+};
+macros["playMelody"] = {
+    handler: function (placeholder, name, parameters) {
+        var melodyId = parameters[0];
+        if (!melodies[melodyId]) {
+            console.error("Melody with ID '" + melodyId + "' not found.");
+            return;
+        }
+        var notes = melodies[melodyId];
+        var currentNoteIndex = 0;
+        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        function playCurrentNote() {
+            if (currentNoteIndex >= notes.length) {
+                audioContext.close();
+                return;
+            }
+            var note = notes[currentNoteIndex];
+            var type = note.type || "sine";
+            var noteName = note.note;
+            var volume = note.volume || 1.0;
+            var duration = note.duration || 1;
+            var frequency = noteFrequencies[noteName];
+            if (!frequency) {
+                console.error("Note '" + noteName + "' not found in note frequencies.");
+                currentNoteIndex++;
+                playCurrentNote();
+                return;
+            }
+            var oscillator = audioContext.createOscillator();
+            oscillator.type = type;
+            oscillator.frequency.value = frequency;
+            var gainNode = audioContext.createGain();
+            gainNode.gain.value = 0;
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.1);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration - 0.1);
+            oscillator.start();
+            setTimeout(function () {
+                oscillator.stop();
+                currentNoteIndex++;
+                playCurrentNote();
+            }, duration * 1000);
+        }
+        playCurrentNote();
+    }
+};
 <<playMelody save>>
+*/
 
 
 :: StoryScript [script]
@@ -876,92 +984,9 @@ Sub~~script~~
 // v1.0.1, 2024-07-22, 336675ff2cabe5f729a5f30d86aa409cc8432726
 ;!function(){"use strict";var t=!0,e=!1,s=!1,i={full:"#2ECC40",empty:"#FF4136",back:"#DDDDDD",height:"12px",width:"180px",animate:400,easing:"swing",text:"#111111",label:"",align:"center"},n=["center","left","right"],r=["swing","linear"];function a(t,e){return t&&"string"==typeof t&&(t=t.toLowerCase().trim())?t:e||""}function o(t){return t<.5?2*t*t:(4-2*t)*t-1}function l(t,e){if(!(this instanceof l))return new l(t,e);var s=clone(i);this.settings=Object.assign(s,t),this.settings.align=a(this.settings.align),this.settings.easing=a(this.settings.easing),n.includes(this.settings.align)||(this.settings.align="center"),r.includes(this.settings.easing)||(this.settings.easing="swing"),e=Number(e),Number.isNaN(e)&&(e=1),e=Math.clamp(e,0,1),this.value=e;var h=$(document.createElement("div")).addClass("chapel-meter").attr({"data-val":e,"data-label":this.settings.label}).css({position:"relative","background-color":this.settings.back,height:this.settings.height,width:this.settings.width,overflow:"hidden"}),g=$(document.createElement("div")).addClass("meter-label").css({top:0,right:0,"font-size":this.settings.height,"font-weight":"bold","line-height":"100%",width:"100%",height:"100%","vertical-align":"middle","text-align":this.settings.align,color:this.settings.text,"z-index":1,position:"relative",bottom:"100%"}).wiki(this.settings.label).appendTo(h),u=$(document.createElement("div")).addClass("meter-top").css({"background-color":this.settings.full,opacity:o(this.value),width:"100%",height:"100%","z-index":0}),c=$(document.createElement("div")).addClass("meter-bottom").css({position:"absolute",top:0,left:0,"background-color":this.settings.empty,opacity:1,width:100*this.value+"%",height:"100%","z-index":0}).append(u).appendTo(h);this.$element=h,this.$bars={top:u,bottom:c},this.$label=g,g.css("font-size",parseInt(h.css("height"),10)<parseInt($(".passage").css("font-size"),10)?h.css("height"):$(".passage").css("font-size")),g.css("line-height",h.css("height"))}Object.assign(l,{_list:new Map,is:function(t){return t instanceof l},has:function(t){return l._list.has(t)&&l.is(l._list.get(t))},get:function(t){return l.has(t)?l._list.get(t):null},del:function(t){l.has(t)&&l._list.delete(t)},add:function(t,s,i){if(!l.has(t)||e){Object.assign(s,{id:t});var n=new l(s,i);return l._list.set(t,n),n}console.error('Meter "'+t+'" already exists.')},_emit:function(t,e){l.is(t)&&t.$element.trigger({type:":"+e,meter:t})}}),Object.assign(l.prototype,{constructor:l,_label:function(t){var e=this;function s(){e.$label.empty().wiki(e.settings.label),e.$label.css("font-size",parseInt(e.$element.css("height"),10)<parseInt(e.$element.parent().css("font-size"),10)?e.$element.css("height"):e.$element.parent().css("font-size")),e.$label.css("line-height",e.$element.css("height"))}return t?setTimeout(s,Engine.minDomActionDelay):s(),this},_width:function(){var t=this;return this.$bars.bottom.animate({width:100*this.value+"%"},this.settings.animate,this.settings.easing,(function(){l._emit(t,"meter-animation-complete")})),this},_color:function(){return this.$bars.top.animate({opacity:o(this.value)},this.settings.animate,this.settings.easing),this},animate:function(){return l._emit(this,"meter-animation-start"),this._color()._width()._label()},val:function(t){return void 0!==t&&(t=Number(t),Number.isNaN(t)&&(t=1),t=Math.clamp(t,0,1),this.value=t,this.animate()),this.value},options:function(t){return t&&"object"==typeof t&&Object.assign(this.settings,t),this.settings},unwrap:function(){return this.$element[0]},place:function(t,e){var s=$(document.createElement("span"));return t instanceof jQuery||(t=$(t)),t[0]||console.warn("meter#place() -> no valid target"),e&&"object"==typeof e&&(e.classes&&(Array.isArray(e.classes)||"string"==typeof e.classes)&&s.addClass(e.classes),e.attr&&"object"==typeof e.attr&&s.attr(e.attr)),t.append(s.append(this.$element)),this._label(!0),this},on:function(t,e){return"function"!=typeof e?this:t&&"string"==typeof t&&t.trim()?(t=t.split(" ").map((function(t){return(t=t.split(".")[0])+".userland"})).join(" "),this.$element.on(t,e),this):this},one:function(t,e){return"function"!=typeof e?this:t&&"string"==typeof t&&t.trim()?(t=t.split(" ").map((function(t){return(t=t.split(".")[0])+".userland"})).join(" "),this.$element.one(t,e),this):this},off:function(t){return t=t&&"string"==typeof t&&t.trim()?t.split(" ").map((function(t){return(t=t.split(".")[0])+".userland"})).join(" "):".userland",this.$element.off(t),this},click:function(t,e){return this.$element.ariaClick(t,e),this},clone:function(){return new l(this.settings,this.value)},toJSON:function(){return JSON.reviveWrapper("new setup.Meter("+JSON.stringify(this.settings)+", "+this.value+")")}}),setup.Meter=l,t&&(window.Meter=window.Meter||l),Macro.add("newmeter",{tags:["colors","sizing","animation","label"],handler:function(){if(State.length>0&&!s)return this.error("The `<<newmeter>>` macro must be called in your `StoryInit` special passage. Seriously. No excuses. --Love, Chapel");if(this.args.length<1)return this.error("The `<<newmeter>>` macro requires at least one argument: a meter name.");var t=this.args[0],i=null,n=null,r=null,a=null;if("string"!=typeof t)return this.error("Invalid meter name.");if(t=t.trim(),l.has(t)&&!e)return this.error('Cannot clobber the existing meter "'+t+'".');this.payload.length&&(i=this.payload.find((function(t){return"colors"===t.name})),n=this.payload.find((function(t){return"sizing"===t.name})),r=this.payload.find((function(t){return"animation"===t.name})),a=this.payload.find((function(t){return"label"===t.name})));var o={};if(i){if(!i.args.length)return this.error("No arguments passed to the `<<colors>>` tag.");switch(i.args.length){case 1:o.empty=i.args[0],o.full="transparent";break;case 2:o.full=i.args[0],o.empty=i.args[1];break;default:o.full=i.args[0],o.empty=i.args[1],o.back=i.args[2]}}if(n){if(!n.args.length)return this.error("No arguments passed to the `<<sizing>>` tag.");o.width=n.args[0],n.args[1]&&(o.height=n.args[1])}if(r){if(!r.args.length)return this.error("No arguments passed to the `<<animation>>` tag.");if("boolean"!=typeof r.args[0]||r.args[0]){if("string"!=typeof r.args[0])return this.error("The argument to the `<<animation>>` tag should be `true`, `false`, or a valid CSS time value.");o.animate=Util.fromCssTime(r.args[0])}else o.animate=0;r.args[1]&&["swing","linear"].includes(r.args[1])&&(o.easing=r.args[1])}if(a){var h=a.args[0];if(!h||"string"!=typeof h)return this.error("The labelText argument for the `<<label>>` tag is required.");o.label=h.trim(),a.args[1]&&"string"==typeof a.args[1]&&(o.text=a.args[1]),a.args[2]&&"string"==typeof a.args[2]&&(o.align=a.args[2])}l.add(t,o,this.args[1])}}),Macro.add("showmeter",{handler:function(){if(this.args.length<1)return this.error("This macro requires at least one argument: the meter's name.");var t=this.args[0];if("string"!=typeof t)return this.error("Invalid meter name.");t=t.trim();var e=l.get(t);if(!e||!l.is(e))return this.error('The meter "'+t+'" does not exist.');"number"==typeof this.args[1]&&e.val(this.args[1]),e.place(this.output,{classes:"macro-"+this.name,attr:{id:"meter-"+Util.slugify(t)}})}}),Macro.add("updatemeter",{handler:function(){if(this.args.length<2)return this.error("This macro requires two arguments: the meter's name and a value.");var t=this.args[0];if("string"!=typeof t)return this.error("Invalid meter name.");t=t.trim();var e=l.get(t);if(!e||!l.is(e))return this.error('The meter "'+t+'" does not exist.');e.val(this.args[1])}})}();
 // end meters.min.js
-// notify.min.js, for SugarCube 2, by Chapel
-// v1.1.1, 2024-07-22, 336675ff2cabe5f729a5f30d86aa409cc8432726
-/* 原型:Chapel's Notify Macro，RyaraSUKI改造分支 */
-(function() {
-    var DEFAULT_TIME = 2000;
-    var isCssTime = /\d+m?s$/;
-    var QUEUE_DELAY = 150;
-    var notifyQueue = [];
-    var isNotifying = false;
-    $(document.body).append("<div id='notify-container'></div>");
-    function processQueue() {
-        if (notifyQueue.length === 0) {
-            isNotifying = false;
-            return;
-        }
-
-        isNotifying = true;
-        var ev = notifyQueue.shift();
-        var classList = 'macro-notify ';
-        if (ev.class) {
-            if (typeof ev.class === 'string') {
-                classList += ev.class;
-            } else if (Array.isArray(ev.class)) {
-                classList += ev.class.join(' ');
-            }
-        }
-        ev.delay = (typeof ev.delay === 'number' && !Number.isNaN(ev.delay)) ? ev.delay : DEFAULT_TIME;
-        var $newNotify = $('<div class="notify-item"></div>')
-            .addClass(classList)
-            .wiki(ev.message);
-        $('#notify-container').append($newNotify);
-        void $newNotify[0].offsetWidth;
-        setTimeout(() => {
-            $newNotify.addClass('open');
-        }, 20);
-        setTimeout(function() {
-            $newNotify.addClass('close');
-            setTimeout(function() {
-                $newNotify.slideUp(300, function() {
-                    $(this).remove();
-                });
-            }, 500);
-        }, ev.delay);
-        setTimeout(processQueue, QUEUE_DELAY);
-    }
-    $(document).on(':notify', function(ev) {
-        if (ev.message && typeof ev.message === 'string') {
-            ev.message = ev.message.trim();
-            notifyQueue.push(ev);
-            if (!isNotifying) {
-                processQueue();
-            }
-        }
-    });
-    function notify(message, time, classes) {
-        if (typeof message !== 'string') return;
-        if (typeof time !== 'number') time = false;
-        $(document).trigger({
-            type: ':notify',
-            message: message,
-            delay: time,
-            class: classes || ''
-        });
-    }
-    Macro.add('notify', {
-        tags: null,
-        handler: function() {
-            var msg = this.payload[0].contents,
-                time = false,
-                classes = false;
-
-            if (this.args.length > 0) {
-                var cssTime = isCssTime.test(this.args[0]);
-                if (typeof this.args[0] === 'number' || cssTime) {
-                    time = cssTime ? Util.fromCssTime(this.args[0]) : this.args[0];
-                    classes = (this.args.length > 1) ? this.args.slice(1).flat(Infinity) : false;
-                } else {
-                    classes = this.args.flat(Infinity).join(' ');
-                }
-            }
-            notify(msg, time, classes);
-        }
-    });
-    setup.notify = notify;
-})();
-// end notify.min.js
+// popout-macro.min.js, for SugarCube 2, by RyaraSUKI v1.0.3
+(()=>{let $topContainer=$('<div id="popout-container" class="top"></div>'),$bottomContainer=$('<div id="popout-container" class="bottom"></div>'),$sideContainer=($(document.body).append($topContainer,$bottomContainer),$('<div id="notify-container"></div>')),notifyQueue=($(document.body).append($sideContainer),[]),isNotifying=!1;function createPopout(message,duration,position,clickScript){var $container="bottom"===position?$bottomContainer:$topContainer;let $item=$('<div class="popout-item"></div>').wiki(message);clickScript&&$item.on("click",()=>{try{Scripting.evalJavaScript(clickScript)}catch(e){console.error("[Popout Error] 气泡弹窗点击代码执行错误：",e)}}),$container.append($item),"bottom"===position?$item.hide().slideDown(300,()=>$item.addClass("show")):($item[0].offsetWidth,$item.addClass("show")),setTimeout(()=>{$item.removeClass("show"),setTimeout(()=>{$item.slideUp(300,()=>$item.remove())},300)},duration)}function processQueue(){if(0===notifyQueue.length)isNotifying=!1;else{isNotifying=!0;let ev=notifyQueue.shift();var classList=Array.isArray(ev.class)?ev.class.join(" "):"string"==typeof ev.class?ev.class:"";let $item=$('<div class="notify-item"></div>').addClass(classList).wiki(ev.message);ev.clickScript&&$item.on("click",()=>{try{Scripting.evalJavaScript(ev.clickScript)}catch(e){console.error("[Popout (side/notify) Error] 气泡弹窗(side/notify)点击代码执行错误：",e)}}),$sideContainer.append($item),$item[0].offsetWidth,setTimeout(()=>$item.addClass("open"),20),setTimeout(()=>{$item.addClass("close"),setTimeout(()=>{$item.slideUp(300,()=>$item.remove())},500)},ev.duration||2e3),setTimeout(processQueue,150)}}function notify(message,duration,classes,clickScript){"string"==typeof message&&$(document).trigger({type:":notify",message:message.trim(),duration:"number"==typeof duration?duration:2e3,class:classes||"",clickScript:clickScript})}$(document).on(":notify",ev=>{ev.message&&"string"==typeof ev.message&&(notifyQueue.push(ev),isNotifying||processQueue())}),Macro.add("popout",{tags:null,handler(){var arg,message=this.payload[0].contents.trim();let duration=2e3,position="top",clickScript="";for(arg of this.args)"number"==typeof arg?duration=arg:"top"===arg||"bottom"===arg||"side"===arg?position=arg:"string"==typeof arg&&(clickScript=arg);message&&("side"===position?notify(message,duration,"",clickScript):createPopout(message,duration,position,clickScript))}}),Macro.add("notify",{tags:null,handler(){var message=this.payload[0].contents.trim();let duration=2e3,classes="";0<this.args.length&&(classes=("number"==typeof this.args[0]?(duration=this.args[0],this.args.slice(1)):this.args).join(" ")),notify(message,duration,classes,"")}}),setup.notify=notify,setup.popout=(message,duration,position="top",clickScript="")=>{"side"===position?notify(message,duration,"",clickScript):createPopout(message,duration,position,clickScript)}})();
+// end popout-macro.min.js
 // preload.min.js, for SugarCube 2, by Chapel
 // v1.1.0, 2024-07-22, 336675ff2cabe5f729a5f30d86aa409cc8432726
 ;!function(){"use strict";function r(r,o){var t=0,e=r.length;if(0===e)throw new Error("No URLs to preload!");r.forEach((function(r){!function(r,o){var t=new Image;t.onload=o,t.onerror=o,t.src=r}(r,(function(){++t===e&&o()}))}))}function o(){return State.length<=0}function t(){var t=[].slice.call(arguments).flat(1/0),e=!!o()&&LoadScreen.lock();return r(t,(function(){e&&LoadScreen.unlock(e)})),e}setup.preload=t,setup.preload.force=!1,Macro.add("preload",{handler:function(){if(!o()&&!setup.preload.force)return this.error("Attempting to preload images outside of `StoryInit` or similar can cause performance issues. Set `setup.preload.force` to `true` if you want to do it anyway.");t(this.args.flat(1/0).filter((function(r){return"string"==typeof r})))}})}();
@@ -1094,155 +1119,122 @@ Macro.add("spoiler", {
 (()=>{(()=>{function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){for(var r=0;r<t.length;r++){var s=t[r];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,n(s.key),s)}}function s(e,t,s){return t&&r(e.prototype,t),s&&r(e,s),Object.defineProperty(e,"prototype",{writable:!1}),e}function n(t){var r=function(t,r){if("object"!=e(t)||!t)return t;var s=t[Symbol.toPrimitive];if(void 0!==s){var n=s.call(t,r||"default");if("object"!=e(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(t)}(t,"string");return"symbol"==e(r)?r:r+""}!function(){var e,r,a,i=new(function(){return s((function e(){t(this,e),this.placeholders={strings:new Map,comments:new Map,templates:new Map},this.patterns={comments:/(\/\*[\s\S]*?\*\/|\/\/.*)/g,templates:/(`(?:\\[\s\S]|[^\\`])*?`)/g,strings:/(["'])(?:\\.|[^\\])*?\1/g,replacements:[{pattern:/(?<=[\s\n\t{}()\[\],;<>!=+\-*/%:|&]|^)\$(\w+)\b/g,replace:function(e,t){return"SugarCube.State.variables.".concat(t)}},{pattern:/(?<=[\s\n\t{}()\[\],;<>!=+\-*/%:|&]|^)_(\w+)\b/g,replace:function(e,t){return"SugarCube.State.temporary.".concat(t)}},{pattern:/(?<=[\s\n\t{}()\[\],;<>!=+\-*/%:|&]|^)setup\b/g,replace:function(){return"SugarCube.setup"}}]}}),[{key:"createPlaceholder",value:function(e,t){var r=this.placeholders[e],s=r.size+1,n="@@".concat(e.toUpperCase(),"_").concat(s,"@@");return r.set(n,t),n}},{key:"replace",value:function(e,t,r){var s=this;return e.replace(t,(function(e){return s.createPlaceholder(r,e)}))}},{key:"restore",value:function(e,t){var r=this.placeholders[t];return e.replace(new RegExp("@@".concat(t.toUpperCase(),"_\\d+@@"),"g"),(function(e){return r.get(e)}))}},{key:"process",value:function(e){try{Object.values(this.placeholders).forEach((function(e){return e.clear()}));var t=e;return t=this.replace(t,this.patterns.comments,"comments"),t=this.replace(t,this.patterns.templates,"templates"),t=this.replace(t,this.patterns.strings,"strings"),this.patterns.replacements.forEach((function(e){var r=e.pattern,s=e.replace;t=t.replace(r,s)})),t=this.restore(t,"strings"),t=this.restore(t,"templates"),t=this.restore(t,"comments")}catch(t){return console.error("处理代码时发生错误:",t),e}}}])}()),o=function(){return s((function e(r){var s=this;t(this,e),this.nodes=new Map,r.forEach((function(e){try{e.choices&&(e.choices=e.choices.map((function(e){if(e.condition&&"string"==typeof e.condition){var t=i.process(e.condition);e.condition=new Function("flags","temp","vars","session","return ".concat(t))}return e}))),s.nodes.set(e.id,e)}catch(t){console.error("Error setting node:",e.id,t)}}))}),[{key:"getNode",value:function(e){return this.nodes.get(e)}},{key:"getAllNodes",value:function(){return Array.from(this.nodes.values())}}])}();e=o,a={},(r=n(r="trees"))in e?Object.defineProperty(e,r,{value:a,enumerable:!0,configurable:!0,writable:!0}):e[r]=a;var c=function(){function e(r){var s=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"start",n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:e.progress(s);t(this,e),this.varname=r,this.start=s,this.progress=n}return s(e,[{key:"visit",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0;return e=null!=e?e:this.progress.current,this.tree.nodes.has(e)?(this.progress.visits[e]=(this.progress.visits[e]||0)+t,this.progress.visits[e]):0}},{key:"tree",get:function(){var e=State.getVar(this.varname);if(!e)throw new Error("Tree ".concat(this.varname," not found"));return e}},{key:"current",get:function(){return this.tree.getNode(this.progress.current)},set:function(e){this.progress.current=e}},{key:"choices",get:function(){var e=this,t=this.current;return null!=t&&t.choices?t.choices.map((function(t,r){return{index:r,text:t.text,available:"function"!=typeof t.condition||t.condition(e.progress.state.flags,e.progress.state.temporary,e.progress.state.variables,e)}})).filter((function(e){return e.available})).map((function(e){return{index:e.index,text:e.text}})):[]}},{key:"isInStart",get:function(){return"start"===this.progress.current}},{key:"make",value:function(e){var t=this.current;if(null==t||!t.choices)return!1;var r=t.choices[e];return!(!r||r.condition&&!r.condition(this.progress.state.flags,this.progress.state.temporary,this.progress.state.variables,this))&&(r.click&&$.wiki(r.click),this.progress.current=r.nextId,this.progress.state.temporary={},this.visit(r.nextId,1),$(document).trigger("storytree:choice",{session:this,choice:r,index:e}),!0)}},{key:"clone",value:function(){return new e(this.varname,this.start,this.progress)}},{key:"toJSON",value:function(){return Serial.createReviver(String.format("new {0}({1},{2},{3})","setup.GameSession",JSON.stringify(this.varname),JSON.stringify(this.start),JSON.stringify(this.progress)))}}],[{key:"progress",value:function(e){return{current:e,state:{flags:[],temporary:{},variables:{}},visits:{}}}}])}();window.SCProcessor=window.SCProcessor||i,window.StoryTree=window.StoryTree||o,window.GameSession=window.GameSession||c,setup.StoryTree=o,setup.GameSession=c,setup.SCProcessor=i}()})(),(()=>{(function(){function getVarname(e){return e.raw.trim().split(" ")[0].replace(/["'$_]/g,"").trim()}function getSession(e){var t=State.getVar("$dialogue_sessions");return t||(t={},State.setVar("$dialogue_sessions",t)),t[e]}function hasFlag(e,t){var r=getSession(e.replace(/[$_]/,""));return!!r&&r.progress.state.flags.includes(t)}function getSVar(e,t){var r=getSession(e);return r?r.progress.state.variables[t]:null}function setSVar(e,t,r){var s=getSession(e);if(!s)return null;s.progress.state.variables[t]=r}function getSTmp(e,t){var r=getSession(e);return r?r.progress.state.temporary[t]:null}function setSTmp(e,t,r){var s=getSession(e);if(!s)return null;s.progress.state.temporary[t]=r}Macro.add("storytree",{tags:null,handler:function handler(){var varname=getVarname(this.args),content=this.payload[0].contents.trim(),contentWithBrackets=content.startsWith("[")?content:"[".concat(content,"]");eval("State.temporary.".concat(varname," = new setup.StoryTree(").concat(contentWithBrackets,");"))}}),Macro.add("dialogue",{handler:function(){if(this.args.length<1)return this.error("Dialogue: varname is required");var e=getVarname(this.args),t=this.args[1]||null,r=this.args[2]||null,s=this.args[3]||"start",n=State.getVar("$dialogue_sessions");n||(n={},State.setVar("$dialogue_sessions",n));var a=n[e];a||(a=new GameSession("_".concat(e),s),n[e]=a);var i=$("<div>").addClass("story-dialogue").attr("id",e),o=$("<div>").addClass("avatar"),c=$("<div>").addClass("name"),u=$("<div>").addClass("content"),l=$("<div>").addClass("choices");c.wiki(t),o.css("background-image","url(".concat(r,")")),u.wiki(a.current.text);var g=function(e){a.make(e),u.empty(),u.wiki(a.current.text),l.empty(),a.choices.forEach((function(e,t){$("<a>").addClass("dialogue-choice").wiki(e.text).on("click",(function(){return g(e.index)})).appendTo(l)}))};a.choices.forEach((function(e,t){$("<a>").addClass("dialogue-choice").wiki(e.text).on("click",(function(){return g(e.index)})).appendTo(l)})),a.isInStart&&a.visit(null,1),i.append(o,c,u,l).appendTo(this.output)}}),Macro.add(["reset_dialogue","reset_dlg"],{handler:function(){this.args.length<=0&&State.setVar("$dialogue_sessions",{});var e=State.getVar("$dialogue_sessions");e?this.args.forEach((function(t){e[t]&&delete e[t]})):State.setVar("$dialogue_sessions",{})}}),Macro.add("toggle_flag",{handler:function(){var e=getSession(getVarname(this.args));if(!e)return this.error("Dialogue: session not found");var t=this.args.slice(1),r=e.progress.state.flags;t.forEach((function(e){r.includes(e)?r.splice(r.indexOf(e),1):r.push(e)}))}}),Macro.add("push_flag",{handler:function(){var e=getSession(getVarname(this.args));if(!e)return this.error("Dialogue: session not found");var t=this.args.slice(1),r=e.progress.state.flags;t.forEach((function(e){r.includes(e)||r.push(e)}))}}),Macro.add("remove_flag",{handler:function(){var e=getSession(getVarname(this.args));if(!e)return this.error("Dialogue: session not found");var t=this.args.slice(1),r=e.progress.state.flags;t.forEach((function(e){r.includes(e)&&r.splice(r.indexOf(e),1)}))}}),Macro.add("set_tmp",{handler:function(){var e=getSession(getVarname(this.args));if(!e)return this.error("Dialogue: session not found");for(var t=this.args.slice(1),r=0;r<t.length;r+=2){var s=t[r],n=t[r+1];void 0!==n&&(e.progress.state.temporary[s]=n)}}}),Macro.add("set_var",{handler:function(){var e=getSession(getVarname(this.args));if(!e)return this.error("Dialogue: session not found");for(var t=this.args.slice(1),r=0;r<t.length;r+=2){var s=t[r],n=t[r+1];void 0!==n&&(e.progress.state.variables[s]=n)}}}),window.hasFlag=window.hasFlag||hasFlag,setup.hasFlag=hasFlag,window.getSVar=window.getSVar||getSVar,setup.getSVar=getSVar,window.setSVar=window.setSVar||setSVar,setup.setSVar=setSVar,window.getSTmp=window.getSTmp||getSTmp,setup.getSTmp=getSTmp,window.setSTmp=window.setSTmp||setSTmp,setup.setSTmp=setSTmp})()})()})();
 /* End StoryTree */
 
-//音符映射表
-var noteFrequencies = {
-    "C0": 16.35, "C#0": 17.32, "Db0": 17.32, "D0": 18.35, "D#0": 19.45, "Eb0": 19.45,
-    "E0": 20.60, "F0": 21.83, "F#0": 23.12, "Gb0": 23.12, "G0": 24.50, "G#0": 25.96,
-    "Ab0": 25.96, "A0": 27.50, "A#0": 29.14, "Bb0": 29.14, "B0": 30.87,
-    "C1": 32.70, "C#1": 34.65, "Db1": 34.65, "D1": 36.71, "D#1": 38.89, "Eb1": 38.89,
-    "E1": 41.20, "F1": 43.65, "F#1": 46.25, "Gb1": 46.25, "G1": 49.00, "G#1": 51.91,
-    "Ab1": 51.91, "A1": 55.00, "A#1": 58.27, "Bb1": 58.27, "B1": 61.74,
-    "C2": 65.41, "C#2": 69.30, "Db2": 69.30, "D2": 73.42, "D#2": 77.78, "Eb2": 77.78,
-    "E2": 82.41, "F2": 87.31, "F#2": 92.50, "Gb2": 92.50, "G2": 98.00, "G#2": 103.83,
-    "Ab2": 103.83, "A2": 110.00, "A#2": 116.54, "Bb2": 116.54, "B2": 123.47,
-    "C3": 130.81, "C#3": 138.59, "Db3": 138.59, "D3": 146.83, "D#3": 155.56, "Eb3": 155.56,
-    "E3": 164.81, "F3": 174.61, "F#3": 185.00, "Gb3": 185.00, "G3": 196.00, "G#3": 207.65,
-    "Ab3": 207.65, "A3": 220.00, "A#3": 233.08, "Bb3": 233.08, "B3": 246.94,
-    "C4": 261.63, "C#4": 277.18, "Db4": 277.18, "D4": 293.66, "D#4": 311.13, "Eb4": 311.13,
-    "E4": 329.63, "F4": 349.23, "F#4": 369.99, "Gb4": 369.99, "G4": 392.00, "G#4": 415.30,
-    "Ab4": 415.30, "A4": 440.00, "A#4": 466.16, "Bb4": 466.16, "B4": 493.88,
-    "C5": 523.25, "C#5": 554.37, "Db5": 554.37, "D5": 587.33, "D#5": 622.25, "Eb5": 622.25,
-    "E5": 659.25, "F5": 698.46, "F#5": 739.99, "Gb5": 739.99, "G5": 783.99, "G#5": 830.61,
-    "Ab5": 830.61, "A5": 880.00, "A#5": 932.33, "Bb5": 932.33, "B5": 987.77,
-    "C6": 1046.50, "C#6": 1108.73, "Db6": 1108.73, "D6": 1174.66, "D#6": 1244.51, "Eb6": 1244.51,
-    "E6": 1318.51, "F6": 1396.91, "F#6": 1479.98, "Gb6": 1479.98, "G6": 1567.98, "G#6": 1661.22,
-    "Ab6": 1661.22, "A6": 1760.00, "A#6": 1864.66, "Bb6": 1864.66, "B6": 1975.53,
-    "C7": 2093.00, "C#7": 2217.46, "Db7": 2217.46, "D7": 2349.32, "D#7": 2489.02, "Eb7": 2489.02,
-    "E7": 2637.02, "F7": 2793.83, "F#7": 2959.96, "Gb7": 2959.96, "G7": 3135.96, "G#7": 3322.44,
-    "Ab7": 3322.44, "A7": 3520.00, "A#7": 3729.31, "Bb7": 3729.31, "B7": 3951.07,
-    "C8": 4186.01, "C#8": 4434.92, "Db8": 4434.92, "D8": 4698.64, "D#8": 4978.03, "Eb8": 4978.03,
-    "E8": 5274.04, "F8": 5587.65, "F#8": 5919.91, "Gb8": 5919.91, "G8": 6271.93, "G#8": 6644.88,
-    "Ab8": 6644.88, "A8": 7040.00, "A#8": 7458.62, "Bb8": 7458.62, "B8": 7902.13
-};
-var melodies = {
-    "save": [
-    { type: "square", note: "C6", volume: 0.7, duration: 0.1 },
-    { type: "sine", note: "G5", volume: 0.5, duration: 0.15 },
-    { type: "square", note: "E6", volume: 0.8, duration: 0.1 },
-    { type: "sawtooth", note: "C7", volume: 0.9, duration: 0.2 }
-  ],
-    "load": [
-        { type: "sawtooth", note: "G6", volume: 0.6, duration: 0.1 },
-        { type: "square", note: "E6", volume: 0.7, duration: 0.1 },
-        { type: "sine", note: "C6", volume: 0.5, duration: 0.2 },
-        { type: "triangle", note: "G5", volume: 0.4, duration: 0.3 }
-    ],
-    "archive": [
-        { type: "sine", note: "C5", volume: 0.3, duration: 0.1 },
-        { type: "square", note: "E5", volume: 0.6, duration: 0.1 },
-        { type: "sawtooth", note: "G5", volume: 0.7, duration: 0.1 },
-        { type: "triangle", note: "C6", volume: 0.8, duration: 0.2 },
-        { type: "sine", note: "G5", volume: 0.5, duration: 0.15 },
-        { type: "square", note: "E5", volume: 0.4, duration: 0.15 },
-        { type: "sawtooth", note: "C5", volume: 0.3, duration: 0.2 }
-    ],
-    "auto": [
-    { type: "triangle", note: "A4", volume: 0.3, duration: 0.1 },
-    { type: "sine", note: "E5", volume: 0.4, duration: 0.12 },
-    { type: "square", note: "C5", volume: 0.25, duration: 0.1 }
-  ]
-};
-macros["playMelody"] = {
-    handler: function (placeholder, name, parameters) {
-        var melodyId = parameters[0];
-        if (!melodies[melodyId]) {
-            console.error("Melody with ID '" + melodyId + "' not found.");
-            return;
-        }
-        var notes = melodies[melodyId];
-        var currentNoteIndex = 0;
-        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        function playCurrentNote() {
-            if (currentNoteIndex >= notes.length) {
-                audioContext.close();
-                return;
-            }
-            var note = notes[currentNoteIndex];
-            var type = note.type || "sine";
-            var noteName = note.note;
-            var volume = note.volume || 1.0;
-            var duration = note.duration || 1;
-            var frequency = noteFrequencies[noteName];
-            if (!frequency) {
-                console.error("Note '" + noteName + "' not found in note frequencies.");
-                currentNoteIndex++;
-                playCurrentNote();
-                return;
-            }
-            var oscillator = audioContext.createOscillator();
-            oscillator.type = type;
-            oscillator.frequency.value = frequency;
-            var gainNode = audioContext.createGain();
-            gainNode.gain.value = 0;
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-            gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.1);
-            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration - 0.1);
-            oscillator.start();
-            setTimeout(function () {
-                oscillator.stop();
-                currentNoteIndex++;
-                playCurrentNote();
-            }, duration * 1000);
-        }
-        playCurrentNote();
-    }
-};
-
 :: StoryStylesheet [stylesheet]
 /* speech.min.css, by chapel; for use with speech.js */
 .say{border:1px solid #eee;overflow:auto}.say img{max-width:20%;float:left;margin-right:1em}.say p:first-of-type{font-weight:700;margin:.2em 0;border-bottom:1px solid #eee}.say p:last-of-type{padding:.5em;margin:0}
 /* popover.min.css, by chapel; for use with popover.js; v1.0.0 */
 #ui-dialog-body.popover{background:0 0;border:0;padding:0}.popover #ui-dialog-titlebar{background:0 0}.popover #ui-dialog-title{display:none}.popover #ui-dialog-close{position:fixed;display:block;top:0;right:0;height:3em}.popover #ui-dialog-close:hover{background-color:transparent;border-color:transparent;color:#c22}#ui-overlay.popover.opaque{opacity:1}#ui-overlay.popover.transparent{opacity:0}#ui-overlay.popover.invert{background-color:#f8f8f8}#ui-dialog-body.popover.invert{color:#111}
 /* end popover.min.css */
-/* notify.min.css, by chapel; for use with notify.js; v1.0.0 */
-/* 通知弹窗宏部分 */
+/* popout.min.css, by chapel; for use with notify.js; v1.0.0 */
+/* 气泡弹窗 top/bottom 容器部分 */
+#popout-container {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    pointer-events: none
+}
+
+#popout-container.bottom {
+    bottom: 0
+}
+
+#popout-container.top {
+    top: 0
+}
+
+/* 气泡弹窗 top/bottom 元素部分，可自行修改样式配色，预设黑色毛玻璃圆角 */
+.popout-item {
+    font-size: 1em;
+    position: relative;
+    width: fit-content;
+    max-width: 80%;
+    margin: 1em auto;
+    padding: 0.8em 1.2em;
+    transition: transform 160ms ease, opacity 0.5s ease, background-color 0.3s;
+    text-align: center;
+    pointer-events: auto;
+    opacity: 0;
+    border-radius: 5px;
+    color: #e0e0e0;
+    border: none;
+    background-color: #1d2d40;
+    backdrop-filter: blur(8px)
+}
+
+/* :hover，预设偏亮的hover效果 */
+.popout-item:hover {
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    background-color: #1d2d40;
+    backdrop-filter: blur(0)
+}
+
+#popout-container.top .popout-item {
+    transform: translateY(-100%)
+}
+
+#popout-container.top .popout-item.show {
+    transform: translateY(0%);
+    opacity: 1
+}
+
+#popout-container.bottom .popout-item {
+    transform: translateY(100%)
+}
+
+#popout-container.bottom .popout-item.show {
+    transform: translateY(0%);
+    opacity: 1
+}
+
+/* 气泡弹窗 side/原notify 容器部分 */
 #notify-container {
     position: fixed;
     top: 2em;
     right: 1em;
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
     max-width: 20em;
+    gap: 0.5em;
+    pointer-events: none;
+    z-index: 9998;
 }
 
-/*通知元素部分，可自行修改边框、配色*/
+/* 气泡弹窗 side/原notify 元素部分，可自行修改样式配色，预设黑色毛玻璃圆角 */
 .notify-item {
-    display: block;
-    width: 16em;
-    padding: 0.2em;
-    border: 1px solid;
-    color: #e0e0e0;
-    background-color: #1d2d40;
-    border-color: #1a7dde;
     position: relative;
     right: -20em;
+    display: block;
+    width: 16em;
+    margin: 0.5em auto;
+    padding: 0.2em;
+    transition: right 160ms ease-in-out, opacity 0.5s, background-color 0.3s;
+    pointer-events: auto;
     opacity: 0;
-    transition: right 160ms ease-in-out, opacity 0.5s;
+    color: #e0e0e0;
+    border: 1px solid #1a7dde;
+    background-color: transparent;
+    backdrop-filter: blur(8px)
+}
+
+/* :hover，预设偏亮的hover效果 */
+.notify-item:hover {
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    background-color: #1d2d40;
+    backdrop-filter: blur(0)
 }
 
 .notify-item.open {
     right: 0;
-    opacity: 1;
+    opacity: 1
 }
 
 .notify-item.close {
     right: -20em;
-    opacity: 0;
+    opacity: 0
 }
-/* end notify.min.css */
+/* end popout.min.css */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list{margin:0 auto;padding:0}.simple-inventory-listing{list-style:none;padding:.3rem .3rem .3rem 1rem;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr}.simple-inventory-listing:nth-child(2n){background-color:#000}.simple-inventory-listing>a,.simple-inventory-listing>span{display:inline-block}.all-listing.simple-inventory-listing{border-top:1px solid #fafafa;background-color:transparent}.drop-link{color:#e33}.drop-link:active,.drop-link:focus,.drop-link:hover{color:#f88}.simple-inventory-filter{text-align:right}.simple-inventory-filter input{display:inline-block}
